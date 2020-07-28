@@ -2,6 +2,10 @@
 
 Tento repozitář obsahuje textovou část mé bakalářské práce.
 
+## Rozcestník
+
+- [Poznámky](notes/README.md)
+
 ## Licence
 
 Copyright ©‎ David Straka.
