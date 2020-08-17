@@ -14,3 +14,6 @@
     - Příklady
 - [Možnosti provedení](moznosti-provedeni/README.md)
     - [PWA](moznosti-provedeni/pwa.md)
+        - Co to je
+        - Použití s Next.js
+        - Související technologie
