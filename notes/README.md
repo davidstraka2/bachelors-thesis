@@ -17,3 +17,4 @@
         - Co to je
         - Použití s Next.js
         - Související technologie
+- [Inspirace](inspirace/README.md)
