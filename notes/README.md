@@ -20,5 +20,7 @@
     - [Electron](moznosti-provedeni/electron.md)
         - Co to je
         - Návody
+    - Rozšíření existujícího editoru
+        - [Ace](moznosti-provedeni/rozsireni-ace.md)
 - [Inspirace](inspirace/README.md)
 - [Ostatní](ostatni/README.md)
