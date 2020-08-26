@@ -17,5 +17,8 @@
         - Co to je
         - Použití s Next.js
         - Související technologie
+    - [Electron](moznosti-provedeni/electron.md)
+        - Co to je
+        - Návody
 - [Inspirace](inspirace/README.md)
 - [Ostatní](ostatni/README.md)
