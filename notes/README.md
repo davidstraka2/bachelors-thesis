@@ -22,5 +22,6 @@
         - Návody
     - Rozšíření existujícího editoru
         - [Ace](moznosti-provedeni/rozsireni-ace.md)
+        - [Atom](moznosti-provedeni/rozsireni-atom.md)
 - [Inspirace](inspirace/README.md)
 - [Ostatní](ostatni/README.md)
