@@ -13,3 +13,4 @@
 ## Rozšíření existujícího editoru
 
 ### [Ace](rozsireni-ace.md)
+### [Atom](rozsireni-atom.md)
