@@ -18,7 +18,11 @@
 - překladové moduly
     - poskytnou základnímu modulu funkce pro překlad jednotlivých typů prvků
         dokumentu tak, aby je bylo možno zobrazit v živém náhledu
+        - funkce mohou mít podobu jednoduché modifikace textu, případně by šlo
+            využít React komponent (nebo něčeho podobného)
     - přidají ovládací prvky pro práci s určitými typy prvků dokumentu
+    - mohou případně přidat i další chování specifické pro své typy prvků
+        dokumentu (např. nějaké speciální našeptávání)
     - nějaké základní překladové moduly (např. zvýraznění, citace, seznam,
         tabulka) mohou být poskytovány spolu se základním modulem, další mohou
         být poskytovány ve formě volitelných rozšíření (např. LaTeX matematika,
@@ -27,6 +31,8 @@
 - šablonové moduly
     - určí, kterého typu je který prvek dokumentu
     - v podstatě takové "lepidlo" mezi základním modulem a překladovými moduly
+    - aktivní šablonu by pak mělo jít zvolit pomocí jednoduchého nastavení (v
+        nastaveních editoru nebo konfiguračním souborem apod.)
     - #todo zvýrazňování syntaxe?
 
 Tato architektura by umožnila jednoduché rozšíření v podobě různých šablon a
