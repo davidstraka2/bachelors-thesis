@@ -14,3 +14,4 @@
 - [Digitální knihovna ČVUT (DSpace)](https://dspace.cvut.cz)
 - [Jak psát závěrečnou práci (Ústřední knihovna ČVUT)](
     http://knihovna.cvut.cz/seminare-a-vyuka/jak-psat/jak-psat-zaverecnou-praci)
+- [Google Scholar](https://scholar.google.com)
