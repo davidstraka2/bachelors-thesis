@@ -23,6 +23,7 @@
     - Rozšíření existujícího editoru
         - [Ace](moznosti-provedeni/rozsireni-ace.md)
         - [Atom](moznosti-provedeni/rozsireni-atom.md)
+        - [Light Table](moznosti-provedeni/rozsireni-lighttable.md)
     - [Architektura](moznosti-provedeni/architektura.md)
 - [Inspirace](inspirace/README.md)
 - [Ostatní](ostatni/README.md)
