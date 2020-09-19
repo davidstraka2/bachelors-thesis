@@ -13,8 +13,8 @@
 
 - open source (MIT)
 - aktivně vyvýjen GitHubem (jejž koupil Microsoft)
-- postaven na Electronu, napsán převážně v JavaScriptu (z části také v
-    CoffeeScriptu, především starší části)
+- postaven na [Electronu](electron.md), napsán převážně v JavaScriptu (z části
+    také v CoffeeScriptu, především starší části)
 - x64 / Windows, OS X, Linux
 - modulární rozšiřitelná architektura
     - jednotlivá rozšíření mohou také jednoduše komunikovat mezi sebou (viz
@@ -49,8 +49,8 @@ obsažené ve většině populárních editorů kódu.*
 
 ## Relevantní rozšíření
 
-*Následuje seznam existujících rozšířeních pro Atom, která do něj přidávají
-funkcionalitu nějakým způsobem relevantní našim požadavkům.*
+*Následuje seznam vybraných existujících rozšířeních pro Atom, která do něj
+přidávají funkcionalitu nějakým způsobem relevantní našim požadavkům.*
 
 ### Atom Tool Bar
 
@@ -96,6 +96,40 @@ funkcionalitu nějakým způsobem relevantní našim požadavkům.*
 - inline náhled [TikZ](https://texample.net/tikz/examples/) diagramů v LaTeX
     dokumentech
 - vyžaduje LaTeX instalaci
+- open source (MIT)
+- napsán v JavaScriptu
+
+### Juno
+
+[Web](https://junolab.org)
+| [Atom Packages](https://atom.io/packages/uber-juno)
+| [Repozitář](https://github.com/JunoLab/atom-julia-client)
+| [Dokumentace](http://docs.junolab.org/latest/)
+
+- prostředí pro práci s jazykem Julia
+- živá zpětná vazba, zvýrazňování syntaxe, grafy, integrace s Julia debuggerem
+- open source (MIT)
+- napsán v JavaScriptu, CoffeeScriptu a Julii
+- od léta 2020 je již pouze "udržován" a vývojáři Juno spojili síly s vývojáři
+    rozšíření pro VS Code ([Visual Studio Marketplace](
+    https://marketplace.visualstudio.com/items?itemName=julialang.language-julia
+    ), [repozitář](https://github.com/julia-vscode/julia-vscode))
+
+## Relevantní základní rozšíření
+
+*Následuje seznam vybraných základních rozšířeních pro Atom, která do něj
+přidávají funkcionalitu nějakým způsobem relevantní našim požadavkům.*
+
+*Základní rozšíření jsou vyvýjena přímo vývojáři Atomu a jsou s ním standardně
+instalována. Jedná se tedy vzhledem k modulární architektuře editoru prakticky o
+volitelnou součást samotného editoru.*
+
+### Markdown Preview
+
+[Atom Packages](https://atom.io/packages/markdown-preview)
+| [Repozitář](https://github.com/atom/markdown-preview)
+
+- zobrazuje živý náhled Markdown dokumentů
 - open source (MIT)
 - napsán v JavaScriptu
 
