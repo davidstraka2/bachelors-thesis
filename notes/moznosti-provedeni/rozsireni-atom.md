@@ -9,7 +9,7 @@
 
 [Web](https://atom.io)
 | [Repozitář](https://github.com/atom/atom)
-| [Dokumentace](https://atom.io/docs)<sup>1</sup>
+| [Dokumentace](https://atom.io/docs)<sup>[1](#note-1)</sup>
 
 - open source (MIT)
 - aktivně vyvýjen GitHubem (jejž koupil Microsoft)
@@ -135,4 +135,4 @@ volitelnou součást samotného editoru.*
 
 ---
 
-*<sup>1</sup> Včetně API reference rozšíření*
+*<a name="note-1"></a><sup>1</sup> Včetně API reference rozšíření*
