@@ -11,5 +11,5 @@ Tento repozitář obsahuje textovou část mé bakalářské práce.
 Copyright ©‎ David Straka.
 
 Dokumenty v tomto repozitáři jsou dostupné pod licencí [Creative Commons
-Attribution 4.0 International (CC BY 4.0)](LICENSE.txt) ([online
-](https://creativecommons.org/licenses/by/4.0/)).
+Attribution 4.0 International (CC BY 4.0)](LICENSE.txt). Stručné shrnutí licence
+na [webu Creative Commons](https://creativecommons.org/licenses/by/4.0/).

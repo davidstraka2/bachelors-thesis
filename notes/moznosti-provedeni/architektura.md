@@ -28,8 +28,9 @@
         být poskytovány ve formě volitelných rozšíření (např. LaTeX matematika,
         [TikZ](https://texample.net/tikz/examples/) diagramy, [MusicXML](
         https://www.w3.org/2017/12/musicxml31/))
-    - také by mohl být jeden či více modulů pro překlad neznámých/
-        nepodporovaných typů prvků dokumentu (pro případ, že by se vyskytly)
+    - také by mohl být jeden či více modulů pro překlad
+        neznámých/nepodporovaných typů prvků dokumentu (pro případ, že by se
+        vyskytly)
         - kdyby takových modulů bylo více, mohl by si uživatel zvolit jeden
             aktivní
 - šablonové moduly

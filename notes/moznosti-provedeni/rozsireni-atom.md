@@ -135,4 +135,5 @@ volitelnou součást samotného editoru.*
 
 ---
 
-*<a name="note-1"></a><sup>1</sup> Včetně API reference rozšíření*
+*<a href="#note-1" name="note-1"><sup>1</sup></a> Včetně API reference
+rozšíření*
