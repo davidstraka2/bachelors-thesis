@@ -15,9 +15,9 @@
 - [Možnosti provedení](moznosti-provedeni/README.md)
     - [PWA](moznosti-provedeni/pwa.md)
         - [Co to je](moznosti-provedeni/pwa.md#co-to-je)
-        - [Použití s Next.js](moznosti-provedeni/pwa.md#použití-s-nextjs)
         - [Související technologie](
             moznosti-provedeni/pwa.md#související-technologie)
+        - [Návody](moznosti-provedeni/pwa.md#návody)
     - [Electron](moznosti-provedeni/electron.md)
         - [Co to je](moznosti-provedeni/electron.md#co-to-je)
         - [Návody](moznosti-provedeni/electron.md#návody)
