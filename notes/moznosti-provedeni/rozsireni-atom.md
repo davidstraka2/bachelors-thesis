@@ -30,6 +30,12 @@ obsažené ve většině populárních editorů kódu.*
     mohou jednoduše komunikovat, viz výše)
     - [oficiální repozitář/obchod s rozšířeními](https://atom.io/packages)
     - zabudovaný package manager
+    - zabudovaný systém testování (viz [dokumentace](
+        https://flight-manual.atom.io/hacking-atom/sections/writing-specs/))
+        - používá framework [Jasmine](
+            https://jasmine.github.io/1.3/introduction.html) (byť starší verzi)
+        - umožnuje psát integrační testy díky přístupu k DOM
+        - #todo bude to fungovat i s webview pro živý náhled?
 - zvýrazňování syntaxe
     - vlastní [formát](
         https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/)
