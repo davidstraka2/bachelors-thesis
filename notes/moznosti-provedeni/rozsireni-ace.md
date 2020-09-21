@@ -18,10 +18,14 @@
 
 ## Funkcionalita
 
+*Následuje seznam klíčové funkcionality nad rámec základní funkcionality
+obsažené ve většině populárních editorů kódu.*
+
 - zvýrazňování syntaxe
-    - vlastní formát inspirovaný [TextMate](
-        https://macromates.com/manual/en/language_grammars) formátem
+    - vlastní formát inspirovaný [TextMate] formátem
     - existuje [nástroj](https://github.com/ajaxorg/ace/tree/master/tool) na
-        (nedokonalý) převod TextMate formátu do Ace formátu
+        (nedokonalý) převod [TextMate] formátu do Ace formátu
 - přizpůsobitelný vzhled
 - přizpůsobitelné klávesové zkratky
+
+[TextMate]: https://macromates.com/manual/en/language_grammars
