@@ -15,5 +15,6 @@
 ### [Ace](rozsireni-ace.md)
 ### [Atom](rozsireni-atom.md)
 ### [Light Table](rozsireni-lighttable.md)
+### [VS Code](rozsireni-vscode.md)
 
 ## [Architektura](architektura.md)
