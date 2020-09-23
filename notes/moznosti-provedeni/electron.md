@@ -19,6 +19,7 @@
 - aktivně vyvýjen GitHubem (jejž koupil Microsoft) a OpenJS Foundation
 - postaven na [Chromiu](https://www.chromium.org/Home) a [Node.js](
     https://nodejs.org/en/)
+- podporuje Windows, OS X, Linux
 
 ## Návody
 

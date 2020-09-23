@@ -17,6 +17,7 @@
 - nezdá se být aktivně vyvýjen (poslední vydání začátkem 2016; verze stále < 1;
     [příspěvek](http://lighttable.com/2019/03/31/New-year-old-plans/) na blogu z
     března 2019 o plánech, které se zatím neuskutečnily)
+- Windows, OS X, Linux
 
 ## Funkcionalita
 

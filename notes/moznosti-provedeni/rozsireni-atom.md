@@ -15,7 +15,7 @@
 - aktivně vyvýjen GitHubem (jejž koupil Microsoft)
 - postaven na [Electronu](electron.md), napsán převážně v JavaScriptu (z části
     také v CoffeeScriptu, především starší části)
-- x64 / Windows, OS X, Linux
+- Windows, OS X, Linux
 - modulární rozšiřitelná architektura
     - jednotlivá rozšíření mohou také jednoduše komunikovat mezi sebou (viz
         [dokumentace](
