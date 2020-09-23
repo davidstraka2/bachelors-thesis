@@ -25,6 +25,7 @@
 obsažené ve většině populárních editorů kódu.*
 
 - podpora rozšíření
+    - zabudovaný správce rozšíření
 - zabudovaný systém pro vkládání různého obsahu
 - zvýrazňování syntaxe
 - přizpůsobitelný vzhled

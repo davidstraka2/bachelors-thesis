@@ -29,7 +29,7 @@ obsažené ve většině populárních editorů kódu.*
 - podpora rozšíření (okolo kterých je postavená architektura Atomu a která spolu
     mohou jednoduše komunikovat, viz výše)
     - [oficiální repozitář/obchod s rozšířeními](https://atom.io/packages)
-    - zabudovaný package manager
+    - zabudovaný správce rozšíření
     - zabudovaný systém testování (viz [dokumentace](
         https://flight-manual.atom.io/hacking-atom/sections/writing-specs/))
         - používá framework [Jasmine](
