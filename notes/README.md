@@ -28,5 +28,6 @@
         - [Light Table](moznosti-provedeni/rozsireni-lighttable.md)
         - [VS Code](moznosti-provedeni/rozsireni-vscode.md)
     - [Architektura](moznosti-provedeni/architektura.md)
+    - [Souhrn a diskuze](moznosti-provedeni/README.md#souhrn-a-diskuze)
 - [Inspirace](inspirace/README.md)
 - [Ostatní](ostatni/README.md)
