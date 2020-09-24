@@ -21,4 +21,4 @@
     pro práci s LaTeX dokumenty
 - online kolaborativní LaTeX editor [Overleaf](https://www.overleaf.com)
 
-[VS Code]: https://code.visualstudio.com
+[VS Code]: ../moznosti-provedeni/rozsireni-vscode.md
