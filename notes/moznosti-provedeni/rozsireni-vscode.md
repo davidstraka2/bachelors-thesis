@@ -37,6 +37,24 @@ obsažené ve většině populárních editorů kódu.*
     - [oficiální repozitář/obchod s rozšířeními](
         https://marketplace.visualstudio.com/vscode)
     - zabudovaný správce rozšíření
+    - chybí API pro nástrojovou lištu (viz [issue](
+        https://github.com/microsoft/vscode/issues/41309)) a VS Code narozdíl
+        od [Atomu](rozsireni-atom.md#funkcionalita) nepodporuje manipulaci s
+        jeho DOM ve jménu lepšího výkonu (viz [dokumentace](
+        https://code.visualstudio.com/api/extension-capabilities/overview#restrictions
+        ) nebo [Stack Overflow](https://stackoverflow.com/q/45891428/8302708))
+        - nejblíže se k tomu dá dostat zneužitím jiných UI prvků (viz např.
+            rozšíření [Shortcut Menu Bar](
+            https://marketplace.visualstudio.com/items?itemName=jerrygoyal.shortcut-menu-bar
+            ) nebo [Shortcuts](
+            https://marketplace.visualstudio.com/items?itemName=gizak.shortcuts))
+        - [seznam](
+            https://code.visualstudio.com/api/extension-capabilities/extending-workbench
+            ) UI komponent, se kterými mohou rozšíření pracovat
+    - zabudovaný systém testování (viz [dokumentace](
+        https://code.visualstudio.com/api/working-with-extensions/testing-extension
+        ))
+        - nezávyslý na testovacím frameworku
 - zvýrazňování syntaxe
     - [TextMate](https://macromates.com/manual/en/language_grammars) gramatiky
 - přizpůsobitelný vzhled
