@@ -4,6 +4,8 @@
   
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
+    // For browsing and working with git history
+    "donjayamanne.githistory",
     // For browsing through tags used in text
     "gruntfuggly.todo-tree"
   ],

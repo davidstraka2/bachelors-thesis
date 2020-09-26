@@ -1,4 +1,9 @@
 {
+  // Configure basic VS Code settings
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.multiCursorModifier": "ctrlCmd",
+
   // Configure the Todo Tree extension to match used tags correctly
   "todo-tree.general.tags": [
     "#todo",
