@@ -17,6 +17,8 @@
 ### [Light Table](rozsireni-lighttable.md)
 ### [VS Code](rozsireni-vscode.md)
 
+## [Knihovny](knihovny.md)
+
 ## [Architektura](architektura.md)
 
 ## Souhrn a diskuze
