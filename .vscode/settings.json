@@ -1,0 +1,11 @@
+{
+  // Configure the Todo Tree extension to match used tags correctly
+  "todo-tree.general.tags": [
+    "#todo",
+    "#TODO"
+  ],
+  "todo-tree.general.tagGroups": {
+    "TODO": ["#todo", "#TODO"]
+  },
+  "todo-tree.regex.regex": "(^\\s*($TAGS)\\s)|(\\s+($TAGS)\\s)|(\\[($TAGS)\\])"
+}

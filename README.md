@@ -6,6 +6,10 @@ Tento repozitář obsahuje textovou část mé bakalářské práce.
 
 - [Poznámky](notes/README.md)
 
+## Tagy
+
+V textu jsou používány "#todo" tagy (bez uvozovek).
+
 ## Licence
 
 Copyright ©‎ David Straka.
