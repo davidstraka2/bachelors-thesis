@@ -33,4 +33,6 @@
     - [Architektura](moznosti-provedeni/architektura.md)
     - [Souhrn a diskuze](moznosti-provedeni/README.md#souhrn-a-diskuze)
 - [Inspirace](inspirace/README.md)
+- [Prototyp](prototyp/README.md)
+    - [Ukázka](prototyp/README.md#ukázka)
 - [Ostatní](ostatni/README.md)
