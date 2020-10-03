@@ -49,3 +49,4 @@
 | [npm](https://www.npmjs.com/package/tikz.js)
 
 - open source (MIT)
+- využívá lokální instalaci LaTeXu
