@@ -9,6 +9,8 @@
 - [Užitečné informace a tipy k tvorbě BP](protips/README.md)
 - [Zadání](zadani/README.md)
     - [Rámcové téma](zadani/README.md#rámcové-téma)
+    - [Název práce](zadani/README.md#název-práce)
+    - [Text zadání](zadani/README.md#text-zadání)
 - [Funkcionalita](funkcionalita/README.md)
 - [WooWoo formát](woo/README.md)
     - [Příklady](woo/README.md#příklady)
