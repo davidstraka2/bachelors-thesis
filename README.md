@@ -2,6 +2,9 @@
 
 Tento repozitář obsahuje textovou část mé bakalářské práce.
 
+Praktická část mé bakalářské práce (tedy samotný software) je dostupná v
+repozitáři <https://github.com/davidstraka2/wootom>.
+
 ## Rozcestník
 
 - [Poznámky](notes/README.md)
