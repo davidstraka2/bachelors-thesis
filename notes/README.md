@@ -7,6 +7,7 @@
 ## Obsah
 
 - [Užitečné informace a tipy k tvorbě BP](protips/README.md)
+    - [Snímky editoru](protips/README.md#snímky-editoru)
 - [Zadání](zadani/README.md)
     - [Rámcové téma](zadani/README.md#rámcové-téma)
     - [Název práce](zadani/README.md#název-práce)
