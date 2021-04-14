@@ -1,0 +1,90 @@
+<sub>[Poznámky](../README.md)
+| Osnova
+<sub>
+
+---
+
+# Osnova
+
+- Úvod
+- Rešerše
+    - Analýza funkčních a nefunkčních požadavků
+    - Implementace vlastního editoru vs. rozšíření existujícího
+        - Poukázat třeba na počet řádků kódu, počet contributorů, apod. u některých existujících editorů
+        - Poukázat na různé užitečné funkce, které existující editory standardně nabízejí
+    - Electron
+        - Co to je, co nabízí
+        - Jaké výhody nám poskytne využití webových technologií pro tvorbu editoru (nebo rozšíření)
+    - Porovnání vybraných editorů postavených na Electronu
+        - Atom vs. VS Code vs. LightTable
+    - Jazyk WooWoo
+        - Popsat základní konstrukty jazyka
+        - Šablony, FIT šablona
+        - Aktuální využití v praxi
+        - Poukázat na neregulární bezkontextové prvky
+            - Vnořené výrazy, matchování uvozovek vnitřních prostředí
+            - Dokázat s pomocí pumping lemma na vybraném prvku, že není regulární
+        - Poukázat na ne-bezkontextové (kontextualně závislé) prvky
+            - Změna významu na základně úrovně odsazení
+            - Poukázat na příklady z jednoho až dvou dalších jazyků (Python, C, ...)
+    - Shrnutí
+- Praktická část
+    - Architektura
+        - Atom package
+        - Možnosti komunikace mezi Atom packages
+        - Možnosti využití modularity a rozšiřitelnosti v souvislosti s WooWoo šablonami
+            - Potencionální vznik většího ekosystému
+    - Zvýrazňování syntaxe
+        - TextMate vs. TreeSitter
+        - Omezení TextMate gramatik a Oniguruma RegExp enginu
+            - Poukázat na rozdíl mezi regulárními výrazy (z klasické CS teorie) a rozšířenými regulárními výrazy (RegExp)
+            - Poukázat na praktické příklady těchto omezení v existujících gramatikách (XML, ...) pro zvýrazňování syntaxe
+                - (nematchuje se celý konstrukt a nekontroluje jeho validita, ale pouze nějaká jeho část)
+        - Možné vylepšení: Dynamické gramatiky
+            - DRY
+            - Lepší testování
+            - Možnost přesnějšího matchování
+    - Parsování
+        - Standardní způsoby parsování, AST
+            - Neexistuje standardní formát AST, viz https://astexplorer.net
+        - Parser generátory
+            - Pro a proti jejich využití
+        - Vlastní parser
+        - Možné vylepšení: Multithreading
+        - Možné vylepšení: Přepsání do nižšího jazyka, využití podprocesu nebo Node.js native addon bindings
+    - Zobrazení náhledu prostého dokumentu
+    - Zobrazování matematických výrazů v dokumentu
+        - Knihovny vs. využití lokální TeX instalace
+        - MathJax vs. KaTeX
+            - MathJax podporuje více matematických maker
+            - KaTeX je rychlejší
+            - MathJax podporuje více způsobů zobrazení a má různé další funkce
+            - HTML výstupy BI-PKM a BI-ZMA využivají MathJax
+        - MathJax v2.x vs. v3.x
+            - v3.x je rychlejší
+            - v2.x podporuje více matematických maker
+            - HTML výstupy BI-PKM a BI-ZMA využivají v2.x
+    - Zobrazování TikZ diagramů
+        - Knihovny vs. využití lokální TeX instalace
+        - TikZJax
+            - Problém s fonty, offline kopií a licencemi
+        - Lokální TeX instalace
+            - Různé způsoby vygenerování výstupu
+            - Různé způsoby podpory Atom témat
+    - Zobrazení přehledu obsahu a značek dokumentu
+        - Vyhledávání
+            - Ctags, Symbols View
+            - Language Server Protocol
+            - Fuzzy search, Fuse.js
+            - Klávesové ovládání ve vyhledávacím poli, .native-key-bindings
+    - Testování
+        - TypeScript
+        - Atom test runners
+            - Porovnání různých custom test runners
+        - Dependecy injection, mocks
+        - AAA pattern
+        - Unit testy
+        - Integrační testy
+        - CI, GitHub Actions
+    - Správa závislostí, version control, dokumentace, release management, code style
+- Závěr
