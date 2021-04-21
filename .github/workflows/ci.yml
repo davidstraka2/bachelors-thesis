@@ -1,0 +1,32 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  CompileThesis:
+    name: Compile thesis to PDF
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./thesis
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          sudo apt install \
+            texlive-latex-extra \
+            texlive-xetex texlive-extra-utils texlive-lang-czechslovak texlive-bibtex-extra \
+            biber \
+            python-pygments
+      - name: Build
+        run: arara "BP_Straka_David_2021"
+      - name: Archive thesis PDF artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: BP_Straka_David_2021.pdf
+          path: BP_Straka_David_2021.pdf
+      - name: Print compilation log
+        if: always()
+        run: |
+          cat BP_Straka_David_2021.log
+          ls -la
