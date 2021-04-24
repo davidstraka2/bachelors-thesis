@@ -24,7 +24,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: BP_Straka_David_2021.pdf
-          path: BP_Straka_David_2021.pdf
+          path: thesis/BP_Straka_David_2021.pdf
       - name: Print compilation log
         if: always()
         run: |
