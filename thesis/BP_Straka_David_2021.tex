@@ -1,6 +1,7 @@
-% arara: lualatex
-% arara: lualatex
-% arara: lualatex
+% arara: lualatex: { shell : yes }
+% arara: biber
+% arara: lualatex: { shell : yes }
+% arara: lualatex: { shell : yes }
 
 % options:
 % thesis=B bachelor's thesis
@@ -23,6 +24,9 @@
 % \usepackage[acronym,nonumberlist,toc,numberedsection=autolabel]{glossaries}
 % \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
 % \makeglossaries
+
+\usepackage[style=iso-numeric]{biblatex}
+\addbibresource{mybibliographyfile.bib}
 
 \newcommand{\tg}{\mathop{\mathrm{tg}}} %cesky tangens
 \newcommand{\cotg}{\mathop{\mathrm{cotg}}} %cesky cotangens
@@ -67,8 +71,7 @@
 	%sem napište závěr Vaší práce
 \end{conclusion}
 
-\bibliographystyle{csn690}
-\bibliography{mybibliographyfile}
+\printbibliography
 
 \appendix
 
