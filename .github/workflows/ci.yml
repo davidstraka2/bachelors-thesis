@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   CompileThesis:
     name: Compile thesis to PDF
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     defaults:
       run:
         working-directory: ./thesis
