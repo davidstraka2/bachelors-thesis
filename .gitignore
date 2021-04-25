@@ -6,6 +6,10 @@ BP_Straka_David_2021.pdf
 *.blg
 *.lof
 *.log
+*.lol
 *.out
 *.run.xml
 *.toc
+
+*.pygstyle
+*.pygtex
