@@ -1,0 +1,40 @@
+WooWoo je nový formát pro tvorbu (zejména) studijních textů, vzniklý z iniciativy Ing. Tomáše Kalvody, Ph.D. z Katedry
+aplikované matematiky na Fakultě informačních technologií Českého vysokého učení technického v Praze. V současnosti je
+tento formát využívaný pro tvorbu studijních textů pro dva předměty, s nimiž se studenti setkají hned v prvním semestru
+bakalářského studia (aktuálně dobíhající akreditace) – Základy matematické analýzy (BI-ZMA) a Přípravný kurz matematiky
+(BI-PKM). Tento formát se snaží vyřešit problém oddělení samotného obsahu dokumentů od informací o způsobu jejich
+zobrazení a spolu s tím problém kvalitního víceformátového (HTML a PDF; v budoucnu plánován také EPUB) výstupu z jednoho
+zdroje.
+
+Každý WooWoo dokument může být rozdělen do více částí. Každou definici části dokumentu tvoří na jednom řádku její typ,
+nadpis a následně může na dalších přímo navazujících řádcích volitelně obsahovat meta-blok (odsazený YAML blok). Typ
+části dokumentu je uvozen tečkou a začíná velkým písmenem; od nadpisu je oddělen mezerou.
+
+Pro ilustraci viz zobecněný formát definice části dokumentu \ref{format-woowoo-cast} nebo definice kapitoly studijního
+textu BI-PKM i s meta-blokem, která je následována blokem textu (tento studijní text využívá existující FIT Template
+šablony) \ref{format-woowoo-pkm-kapitola}.
+
+\begin{listing}
+    \caption{Obecný formát definice části WooWoo dokumentu}
+    \label{format-woowoo-cast}
+    \begin{minted}[breaklines]{text}
+.MojeCast Nadpis
+  ...
+  volitelný YAML meta-blok
+  ...
+    \end{minted}
+\end{listing}
+
+\begin{listing}
+    \caption{Část dokumentu ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-kapitola}
+    \begin{minted}[breaklines]{text}
+.Chapter Úvod
+  label: chap-intro
+
+Než se pustíme do hlavního výkladu, je vhodné čtenáře nejprve
+seznámit s cíli a smyslem tohoto kurzu, resp. studijního textu.
+    \end{minted}
+\end{listing}
+
+\#todo Objekty, vnitřní a vnější prostředí, bloky, šablony, FIT Template

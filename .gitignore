@@ -11,5 +11,6 @@ BP_Straka_David_2021.pdf
 *.run.xml
 *.toc
 
+*.pyg
 *.pygstyle
 *.pygtex

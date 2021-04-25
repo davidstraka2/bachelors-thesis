@@ -28,6 +28,8 @@
 \usepackage[style=iso-numeric]{biblatex}
 \addbibresource{mybibliographyfile.bib}
 
+\usepackage{enumitem}
+
 \usepackage{luavlna}
 
 \usepackage{minted}
@@ -65,17 +67,19 @@
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 
 \begin{introduction}
-	%sem napište úvod Vaší práce
+	\input{content/úvod}
 \end{introduction}
 
-\chapter{Cíl práce}
+%\chapter{Cíl práce}
 
-\chapter{Analýza a návrh}
+\chapter{Rešerše a analýza}
+\input{content/rešerše-a-analýza/main}
 
 \chapter{Realizace}
+\input{content/realizace/main}
 
 \begin{conclusion}
-	%sem napište závěr Vaší práce
+	\input{content/závěr}
 \end{conclusion}
 
 \printbibliography
@@ -85,8 +89,7 @@
 \chapter{Seznam použitých zkratek}
 % \printglossaries
 \begin{description}
-	\item[GUI] Graphical user interface
-	\item[XML] Extensible markup language
+	\input{content/zkratky}
 \end{description}
 
 

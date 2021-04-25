@@ -1,0 +1,26 @@
+Cílem této práce bylo seznámit se s nově vzniklým formátem WooWoo, prozkoumat možnosti moderních editorů či vývojových
+prostředí, zejména co se týče jejich rozšiřitelnosti a navrhnout, implementovat a otestovat rozšíření vybraného editoru,
+jehož účelem má být právě poskytnutí chybějící okamžité zpětné vazby při tvorbě WooWoo dokumentů a tím zjednodušení
+práce s nimi. Zejména jde pak o přehlednou prezentaci logické struktury dokumentů, zobrazování matematických výrazů a
+různých grafických objektů (TikZ diagramy), navigaci mezi různými částmi dokumentu a vyhledávání pomocí značek objektů,
+a to s využitím stylů založených na existujících šablonách.
+
+Na základě provedené rešerše bylo vytvořeno rozšíření editoru Atom, protože poskytuje ze zkoumaných editorů největší
+prostor pro modifikaci a zároveň poskytuje kvalitní dokumentaci a širokou komunitu pro řešení případných problémů.
+
+Toto rozšíření aktuálně nabízí živý náhled otevřeného kusu dokumentu, který přesně a přehledně prezentuje jeho logickou
+strukturu. Náhled také zobrazuje v dokumentu obsažené matematické výrazy s využitím knihovny MathJax 2.6, která
+poskytuje dostatečnou podporu LaTeX maker využitých v existujících studijních materiálech psaných s pomocí WooWoo.
+Náhled dále zobrazuje TikZ diagramy s využitím nativní TeX distribuce. Rozšíření poskytuje okno s přehledem částí a
+značek v otevřeném kusu dokumentu a fuzzy vyhledávání v jejich názvech. Bylo využito stylů založených na existujících
+šablonách.
+
+Funkčnost rozšíření byla řádně otestována s využitím unit testů, integračních testů a jednoduchého uživatelského
+testování. Dále byly prozkoumány možnosti rozšíření editoru pro podporu více šablon a návrh a implementace probíhaly
+tak, aby toto případné další rozšíření šlo provést jen s drobnými modifikacemi.
+
+Vzniklé rozšíření usnadní tvorbu studijních textů ve formátu WooWoo díky poskytnutí okamžité zpětné vazby a nabízí navíc
+mnoho možností pro další budoucí rozšíření, jako je podpora zobrazení celého dokumentu (ne jen otevřeného kusu),
+synchronní posuv náhledu, lišta nástrojů, podpora více šablon a potenciální vznik celého ekosystému šablonových
+rozšíření. Zde implementovaný parser by se navíc mohl potencionálně využít i ve zcela jiných projektech, a to i díky
+použité permisivní open source licenci a kódu dostupnému na portálu GitHub.
