@@ -25,6 +25,7 @@
 % \iflanguage{czech}{\renewcommand*{\acronymname}{Seznam pou{\v z}it{\' y}ch zkratek}}{}
 % \makeglossaries
 
+\usepackage{expl3} % Fix biblatex bug (https://tex.stackexchange.com/a/581469)
 \usepackage[style=iso-numeric]{biblatex}
 \addbibresource{mybibliographyfile.bib}
 
