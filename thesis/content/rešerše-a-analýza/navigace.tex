@@ -1,1 +1,48 @@
-\#todo Přehled částí dokumentu a značek, vyhledávání v něm, Symbols View package, ctags, Language Server Protocol, ...
+V analýze požadavků \ref{analyza-pozadavku} se nachází řada funkčních požadavků na navigaci v dokumentu. Tyto funkční
+požadavky lze rozdělit na dvě skupiny – požadavky na navigaci v částech dokumentu a požadavky na navigaci ve značkách v
+dokumentu.
+
+Navigaci v částech dokumentu by bylo možné realizovat jako navigační okno ve stylu těch, která nabízí například
+prohlížeče PDF dokumentů nebo textové procesory (např. Microsoft Word \cite{word-docs}). Uživateli by se tak zobrazil
+více-úrovňový seznam, kde každá úroveň obsahuje všechny části dokumentu dané úrovně seřazeny za sebou tak, jak se v
+dokumentu vyskytují. Nad seznamem by bylo umístěno vyhledávací pole, s jehož pomocí by uživatel mohl vyfiltrovat pouze
+relevantní části dokumentu. Vytvořit takový seznam půjde díky AST vzniklému parsováním. Pro zobrazení každé položky
+seznamu, tedy názvu části dokumentu, by mohla být zavolána stejná funkce, která jej zobrazí v náhledu dokumentu. Tím
+bude postaráno i o zobrazení případných vnitřních prostředí v názvu dokumentu. Při kliknutí na položku seznamu by pak
+došlo ke skoku na odpovídající řádek v editoru (řádek, kde začíná část dokumentu, také umožní určit AST).
+
+Pro zobrazení seznamu značek obsažených v dokumentu s možností fuzzy vyhledávání, skokem na vybranou značku ze seznamu
+do dokumentu nebo z reference na značku se nabízí využít \textit{core package} Atomu Symbols View. Tento
+\textit{package} dle \cite{atom-package-symbols-view} umožňuje takovou navigaci mezi symboly dokumentu, které je nutné
+popsat v \textit{tags} souboru ve formátu kompatibilním s nástrojem Ctags. Ctags z pochopitelných důvodů neumí tento
+\textit{tags} soubor vygenerovat pro WooWoo dokumenty. Toto by tedy bylo nutné naimplementovat v našem rozšíření, nebo
+případně využít jednoho ze způsobů jak rozšířit Ctags o vlastní parser (viz \cite{ctags-docs}).
+
+Implementace generování \textit{tags} souboru se zdá jako relativně jednoduché řešení, protože Ctags formáty mají
+podle \cite{ctags-docs} jednoduchou syntaxi. Navíc všechny informace, které je v \textit{tags} souboru nutno uvést,
+získáme z AST vytvořeného při parsování, které budeme implementovat už jen kvůli překladu WooWoo do HTML pro zobrazení
+náhledu. Bohužel Symbols View dle \cite{atom-package-symbols-view-github} při zobrazení symbolů v aktuálně otevřeném
+souboru pro jejich získání sám volá nástroj Ctags, namísto toho, aby se je pokusil získat z již existujícího
+\textit{tags} souboru (toto se liší od chování při zobrazení symbolů v celém projektu, kdy Symbols View nejprve zkouší
+číst existující \textit{tags} soubor) a chybí tak způsob, jak mu náš vlastní soubor předat. Vzhledem k velkému množství
+značek ve WooWoo zdrojích existujících studijních textů je zrovna možnost zobrazení symbolů pouze z aktuálního souboru
+důležitá.
+
+Existuje také \textit{package} atom-ctags, fork Symbols View \textit{package}, který Symbols View v mnoha směrech
+rozšířil a pozměnil \cite{atom-package-atom-ctags-github}. Nabízí se tedy otázka, zdali by v tomto směru nemohl fungovat
+lépe. Tento fork ale obsahuje dle jeho issue trackeru \cite{atom-package-atom-ctags-github} nemalé množství
+problematických chyb a jeho vývoj či údržba je dle \cite{atom-package-atom-ctags-github} neaktivní od roku 2017.
+
+Dalšími možnostmi je tedy vytvořit nový fork Symbols View \textit{package} a upravit jej dle vlastních potřeb, nebo
+rozšířit Ctags o vlastní parser (což by ale možná také nakonec vyžadovalo drobné úpravy Symbols View \textit{package}).
+Zde už se však zdá jednodušší vytvořit si vlastní přehled značek v otevřeném souboru, kde implementace bude převážně
+stejná či hodně podobná jako implementace zobrazení přehledu částí dokumentu.
+
+Alternativně by ještě bylo možné vytvořit \textit{language server} pro komunikaci s Atomem přes Language Server
+Protocol (viz \cite{lsp-docs}), kterou na straně Atomu umožňuje knihovna Atom Language Server Protocol Client
+\cite{atom-lsp-client-github}. Tento přístup by dle \cite{atom-lsp-client-github} umožnil mimo jiné právě navigaci z
+reference značky v dokumentu na její definici. Navíc by takto implementovanou funkcionalitu podle \cite{lsp-docs} bylo
+možno využít i v jiných editorech, které podporují Language Server Protocol (v současnosti dle \cite{lsp-docs} například
+VS Code, Visual Studio nebo Brackets, ve formě rozšíření také například Eclipse, Sublime Text, emacs nebo vim). Tento
+přístup by ale dle \cite{atom-lsp-client-github} sám o sobě neposkytl seznam všech značek a možnost vyhledávání v něm.
+Dále by pravděpodobně vyžadoval komplexnější implementaci.

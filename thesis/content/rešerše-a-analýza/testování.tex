@@ -1,14 +1,52 @@
-Atom poskytuje v sobě zabudovaný systém pro spouštění testů, takzvaný test runner, postavený na testovacím frameworku
-Jasmine. Všechny testy musí být ve složce \mintinline{text}{spec} v kořenové složce package a musí mít ve jméně příponu
-\mintinline{text}{-spec} (tedy například \mintinline{text}{main-spec.js}). Následně je všechny testy možno spustit z
-terminálu příkazem \mintinline{shell}{atom --test spec} (případně lze namísto celé složky s testy použít seznam
-konkrétních souborů s testy), nebo přímo z Atomu s pomocí příkazu \mintinline{text}{window:run-package-specs}, za
-předpokladu, že je jako aktuální projekt otevřen testovaný package. \cite{atom-man-specs}
+Dle \cite{atom-docs} v sobě Atom poskytuje integrovaný systém pro spouštění testů, takzvaný \textit{test runner},
+postavený na testovacím frameworku Jasmine. Dále \cite{atom-docs} uvádí, že všechny testy musí být ve složce
+\mintinline{text}{spec} v kořenové složce \textit{package} a musí mít ve jméně příponu \mintinline{text}{-spec} (tedy
+například \mintinline{text}{main-spec.js}). Následně je podle \cite{atom-docs} možné všechny testy spustit z terminálu
+příkazem \mintinline[breaklines]{shell}{atom --test spec} (případně lze namísto celé složky s testy použít seznam
+konkrétních souborů s testy), nebo přímo z Atomu s pomocí příkazu \mintinline[breaklines]{text}
+{window:run-package-specs}, za předpokladu, že je jako aktuální projekt otevřen právě testovaný \textit{package}.
 
-Tento Atomem poskytovaný test runner nicméně vnitřně využívá Jasmine ve verzi 1.3. \cite{atom-man-specs} Jedná se o
-poněkud starší verzi z roku 2013. \cite{jasmine-old-release} Chceme-li použít novější verzi Jasmine, nebo dokonce úplně
-jiný testovací framework, můžeme využít možnosti vytvoření vlastního test runner. Takto vytvořené test runners pak jde
-navíc jednoduše poskytnout ostatním pro využití v jejich packages, které si test runner pouze stáhnou jako závislost z
-npm a v \mintinline{text}{package.json} řeknou Atomu, že chtějí využít onen konkrétní test runner. \cite{atom-man-specs}
+Tento Atomem poskytovaný \textit{test runner} nicméně dle \cite{atom-docs} vnitřně využívá Jasmine ve verzi 1.3. V
+\cite{jasmine-releases} najdeme, že se jedná o poněkud starší verzi z roku 2013. Chceme-li použít novější verzi Jasmine,
+nebo dokonce úplně jiný testovací framework, můžeme podle \cite{atom-docs} využít možnosti vytvoření vlastního
+\textit{test runner}. Takto vytvořené \textit{test runners} pak navíc dle \cite{atom-docs} jde jednoduše poskytnout
+ostatním vývojářům pro využití v jejich \textit{packages}, které si konkrétní \textit{test runner} pouze stáhnou jako
+závislost z npm a v \mintinline{text}{package.json} řeknou Atomu, že chtějí využít onen konkrétní \textit{test runner}.
 
-\#todo Výběr konkrétního test runneru
+\subsection{Výběr komunitního \textit{test runner}}
+
+Protože vytvoření vlastního \textit{test runner} nemusí být zrovna jednoduché, není to cílem této práce a zároveň
+už existuje více \textit{test runners}, mezi kterými si můžeme vybrat, porovnáme několik těchto komunitních \textit{
+test runners} a pro realizaci vybereme jeden z nich.
+
+Použití testovacího frameworku Jest umožňuje \textit{test runner} atom-test-runner-jest \cite{test-runner-jest-github}.
+Tento \textit{test runner} se ale nezdá být aktivně udržován (poslední commit je dle \cite{test-runner-jest-github} z
+června 2018), issue tracker obsahuje dle \cite{test-runner-jest-github} dva otevřené issues z celkového počtu tří
+issues, všechny také z roku 2018. Komunita kolem tohoto \textit{test runner} se zdá malá (jednotky až nízké desítky
+týdenních stažení během posledního roku z npm \cite{npm}).
+
+Použití testovacího frameworku Mocha umožňuje \textit{test runner} atom-mocha-test-runner
+\cite{test-runner-mocha-github}. Tento \textit{test runner} je na tom z hlediska aktivity údržby lépe než
+atom-test-runner-jest. Poslední commit je dle \cite{test-runner-mocha-github} z prosince 2020 (je však pouze o
+poloautomatický update závislostí; poslední commit bez těchto prostých aktualizací je z června 2019), issue tracker dle
+\cite{test-runner-mocha-github} neobsahuje žádný otevřený issue z celkem dvou issues (z nichž poslední je z prosince
+2020). Komunita kolem tohoto \textit{test runner} se zdá být větší než u atom-test-runner-jest (vyšší stovky až přes
+tisíc týdenních stažení během posledního roku z npm \cite{npm}). Tento \textit{test runner} navíc podle
+\cite{test-runner-mocha-github} spravují přímo vývojáři Atomu.
+
+Použití aktuální verze frameworku Jasmine (což je v době psaní verze 3.7) umožňuje \textit{test runner}
+atom-jasmine3-test-runner \cite{test-runner-jasmine3-github}. Tento \textit{test runner} se na tom zdá být nejlépe jak z
+hlediska aktivní údržby, tak z hlediska velikosti komunity kolem. Nové commity dle \cite{test-runner-jasmine3-github}
+přibývají každý týden, issue tracker dle \cite{test-runner-jasmine3-github} neobsahuje žádný otevřený issue z celkových
+12 issues (z nichž poslední je z ledna tohoto roku), počty týdenních stažení z npm se dle \cite{npm} pohybují kolem
+vyšších stovek až nižších jednotek tisíc během posledního roku. Autor tohoto \textit{test runner} je navíc velmi aktivní
+i v dalších komunitních projektech kolem Atomu (například také spravuje \cite{github-action-setup-atom} GitHub
+\textit{action} pro použití Atomu v nástroji pro kontinuální integraci GitHub Actions) a Jasmine. Tento
+\textit{test runner} je podle \cite{test-runner-jasmine3-github} také využíván pro testování například v
+\textit{package} autocomplete-plus \cite{atom-package-autocomplete-plus}, což je \textit{core package} Atomu, nebo také
+v \textit{package} Hydrogen \cite{atom-package-hydrogen}, oblíbeném prostředí pro práci s Jupyter notebooky.
+
+Podobných \textit{test runners} existuje mnohem více, ale převažuje mezi nimi problém neaktivní údržby, malé komunity,
+případně i otevřených issues s problematickými chybami. Z výše popsaných \textit{test runners} se jeví
+atom-jasmine3-test-runner jako nejlepší volba, díky aktivní údržbě a větší komunitě, která tento \textit{test runner}
+využívá.

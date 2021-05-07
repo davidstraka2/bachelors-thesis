@@ -1,14 +1,28 @@
 WooWoo je nový formát pro tvorbu (zejména) studijních textů, vzniklý z iniciativy Ing. Tomáše Kalvody, Ph.D. z Katedry
 aplikované matematiky na Fakultě informačních technologií Českého vysokého učení technického v Praze. V současnosti je
-tento formát využívaný pro tvorbu studijních textů pro dva předměty, s nimiž se studenti setkají hned v prvním semestru
-bakalářského studia (aktuálně dobíhající akreditace) – Základy matematické analýzy (BI-ZMA) a Přípravný kurz matematiky
-(BI-PKM). Tento formát se snaží vyřešit problém oddělení samotného obsahu dokumentů od informací o způsobu jejich
-zobrazení a spolu s tím problém kvalitního víceformátového (HTML a PDF; v budoucnu plánován také EPUB) výstupu z jednoho
-zdroje.
+tento formát využívaný pro tvorbu studijních textů pro dva předměty, s nimiž se studenti setkávají hned v prvním
+semestru bakalářského studia (aktuálně dobíhající akreditace) – Základy matematické analýzy (BI-ZMA) a Přípravný kurz
+matematiky (BI-PKM).
 
-Každý WooWoo dokument může být rozdělen do více částí. Každou definici části dokumentu tvoří na jednom řádku její typ,
-nadpis a následně může na dalších přímo navazujících řádcích volitelně obsahovat meta-blok (odsazený YAML blok). Typ
-části dokumentu je uvozen tečkou a začíná velkým písmenem; od nadpisu je oddělen mezerou.
+Primárním cílem tohoto formátu je dle \cite{woowoo} kompletní oddělení zdroje dokumentů s možnými meta-informacemi od
+informací o způsobu jejich zobrazení. Zdroj dokumentu a případné meta-informace chce podle \cite{woowoo} formát
+prezentovat v člověkem čitelné podobě. Dále se tento formát v kombinaci s šablonami snaží vyřešit problém kvalitního
+víceformátového (HTML a PDF; v budoucnu plánován také EPUB) výstupu z jednoho zdroje.
+
+WooWoo dokument se dle \cite{woowoo} může dělit do více částí a může obsahovat bloky a objekty (všechny tyto konstrukty
+jsou podrobněji popsány v nadcházejících podsekcích). Části dokumentu, bloky i objekty mohou být dle \cite{woowoo} dále
+doplněny o meta-bloky (odsazenými YAML bloky).
+
+Konkrétní dostupné typy částí dokumentu, objektů a dalších konstruktů jsou dle \cite{woowoo} závislé na použité šabloně.
+Stejně tak dle \cite{woowoo} šablona určuje způsob nakládání s informacemi z meta-bloků.
+
+\subsection{Části dokumentu}
+
+Každý WooWoo dokument může dle \cite{woowoo} být rozdělen do více částí. Podle \cite{woowoo} každou definici části
+dokumentu tvoří na jednom řádku její typ, nadpis a následně může na dalších přímo navazujících řádcích volitelně
+obsahovat meta-blok (odsazený YAML blok). Typ části dokumentu je dle \cite{woowoo} uvozen tečkou a začíná velkým
+písmenem; od nadpisu je oddělen mezerou. Definice části vždy začíná na začátku řádku, nemůže mít před sebou ani bílé
+znaky (mezery).
 
 Pro ilustraci viz zobecněný formát definice části dokumentu \ref{format-woowoo-cast} nebo definice kapitoly studijního
 textu BI-PKM i s meta-blokem, která je následována blokem textu (tento studijní text využívá existující FIT Template
@@ -37,4 +51,221 @@ seznámit s cíli a smyslem tohoto kurzu, resp. studijního textu.
     \end{minted}
 \end{listing}
 
-\#todo Objekty, vnitřní a vnější prostředí, bloky, šablony, FIT Template
+\subsection{Objekty}
+
+Každý WooWoo dokument může dle \cite{woowoo} obsahovat libovolné množství objektů. Každou definici objektu tvoří dle
+\cite{woowoo} na jednom řádku jeho typ a následně může na dalších přímo navazujících řádcích volitelně obsahovat
+meta-blok (odsazený YAML blok). Typ objektu je dle \cite{woowoo} uvozen tečkou, začíná velkým písmenem a je následován
+dvojtečkou. Tělo objektu může obsahovat odsazené bloky, oddělené mezi sebou alespoň dvěma prázdnými řádky.
+
+Pro ilustraci viz zobecněný formát definice objektu \ref{format-woowoo-objekt} nebo definice konkrétního typu objektu ze
+studijního textu BI-PKM i s jeho meta-blokem, která je následována bloky (tento studijní text využívá existující FIT
+Template šablony) \ref{format-woowoo-pkm-otazka}.
+
+\begin{listing}
+    \caption{Obecný formát definice objektu WooWoo dokumentu}
+    \label{format-woowoo-objekt}
+    \begin{minted}[breaklines]{text}
+.MujObjekt:
+  ...
+  volitelný YAML meta-blok
+  ...
+
+  odsazený blok
+
+
+  odsazený blok
+
+
+  ...
+    \end{minted}
+\end{listing}
+
+\begin{listing}
+    \caption{Objekt ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-otazka}
+    \begin{minted}[breaklines]{text}
+.Question:
+  difficulty: 2
+
+  Nechť $a>b>0$. O číslech $a$ a $b$ říkáme, že jsou ve zlatém
+  poměru "Hodnota tohoto poměru se také někdy nazývá zlatým řezem.".footnote, pokud poměr $a+b$ ku $a$ je stejný
+  jako $a$ ku $b$. Jaký je tento poměr, tedy
+  $\varphi = \frac{a}{b}$?
+
+  .solution:
+
+    $\displaystyle\varphi = \frac{1+\sqrt{5}}{2}$.
+    \end{minted}
+\end{listing}
+
+\subsection{Bloky}
+
+Blok je dle \cite{woowoo} série po sobě jdoucích, jednotně odsazených řádků textu (textový blok) a vnějších prostředí,
+oddělených jedním prázdným řádkem. Textový blok i vnější prostředí mohou být podle \cite{woowoo} na dalších přímo
+navazujících řádcích doplněny meta-blokem (odsazeným YAML blokem). Dle \cite{woowoo} v sobě textový blok déle může
+obsahovat vnitřní prostředí. Vnější a vnitřní prostředí jsou podrobněji popsány v nadcházejících podsekcích.
+
+Pro ilustraci viz blok ze studijního textu BI-PKM (tento studijní text využívá existující FIT Template šablony)
+\ref{format-woowoo-pkm-blok}. Uvedený blok obsahuje textový blok (s vnitřním prostředím), následovaný zkráceným vnějším
+prostředím bez hlavičky (které se ve FIT Template šabloně chová jako vnější prostředí reprezentující blokovou
+matematiku), následované dalším textovým blokem a vnějším prostředím \mintinline{text}{.solution}.
+
+\begin{listing}
+    \caption{Blok ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-blok}
+    \begin{minted}[breaklines]{text}
+Čemu se rovná součet prvních $n$ lichých přirozených čísel? Tj.
+čemu se rovná součet
+
+  1 + 3 + 5 + \cdots + (2n-1) = \sum_{j=1}^n (2j-1), \quad n \in
+  \mathbb{N}.
+
+Své tvrzení dokažte.
+
+.solution:
+
+  $\sum_{j=1}^n (2j - 1) = n^2$. Tento vztah laskavý čtenář
+  snadno dokáže pomocí matematické indukce.
+    \end{minted}
+\end{listing}
+
+\subsection{Vnější prostředí}
+
+Každý blok může dle \cite{woowoo} obsahovat libovolné množství vnějších prostředí. Syntaxe vnějšího prostředí je dle
+\cite{woowoo} podobná syntaxi objektů, kde jediným rozdílem je, že typ vnějšího prostředí začíná malým písmenem a tělo
+obsahuje pouze jeden blok textu.
+
+Hlavičku vnějšího prostředí je dle \cite{woowoo} možno vynechat. Jedná se pak v podstatě o speciální blok, který je
+odsazen více než blok předchozí. Chování tohoho zkráceného vnějšího prostředí či speciálně odsazeného bloku pak dle
+\cite{woowoo} určuje konkrétní použitá šablona jako zkratku nějakého z vnějších prostředí.
+
+Definice vnějšího prostředí může být dle \cite{woowoo} uvozena namísto tečky vykřičníkem. V takovém případě se podle
+\cite{woowoo} jedná o křehké prostředí a neprovádí se žádné další parsování nebo transformace jeho obsahu.
+
+Pro ilustraci viz zobecněný formát definice vnějšího prostředí \ref{format-woowoo-outer-env}, definice konkrétního typu
+vnějšího prostředí ze studijního textu BI-PKM i s jeho meta-blokem, která je následována blokem textu (tento
+studijní text využívá existující FIT Template šablony) \ref{format-woowoo-pkm-quote}, případně definice konkrétního typu
+křehkého vnějšího prostředí ze stejného zdroje \ref{format-woowoo-pkm-tikz}.
+
+\begin{listing}
+    \caption{Obecný formát definice vnějšího prostředí WooWoo dokumentu}
+    \label{format-woowoo-outer-env}
+    \begin{minted}[breaklines]{text}
+.mojeVnejsiProstredi:
+  ...
+  volitelný YAML meta-blok
+  ...
+
+  odsazený blok
+    \end{minted}
+\end{listing}
+
+\begin{listing}
+    \caption{Vnější prostředí ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-quote}
+    \begin{minted}[breaklines]{text}
+.quote:
+  author: 'Nápis na vstupu do Platónovy Akademie'
+
+  Bez znalosti geometrie sem nikdo nevstupuj.
+    \end{minted}
+\end{listing}
+
+\begin{listing}
+    \caption{Křehké vnější prostředí ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-tikz}
+    \begin{minted}[breaklines]{text}
+!tikz:
+  options: 'scale=1.3'
+  filename: fig-komplexni-rovina
+
+  \def\a{1.2}
+  \def\b{.8}
+  \draw[thick,->] (-2,0) -- (2,0) node[above] {$\Re$};
+  \draw[thick,->] (0,-2) -- (0,2) node[left] {$\Im$};
+  \draw[gray,dashed] (\a,-2) -- (\a,2) (-2,\b) -- (2,\b);
+  \fill[black] (\a,\b) circle (0.05) node[anchor=south west] {$a+\ii b$};
+  \draw[thick] (.05,\b) -- (-.05,\b) node[anchor=south east] {$b$};
+  \draw[thick] (\a,.05) -- (\a,-.05) node[anchor=north west] {$a$};
+    \end{minted}
+\end{listing}
+
+\subsection{Vnitřní prostředí}
+
+Každý textový blok v sobě dle \cite{woowoo} může obsahovat libovolné množství vnitřních prostředí. Vnitřní prostředí
+musí být definováno na jednom řádku. Vnitřní prostědí lze dle \cite{woowoo} definovat dvěma způsoby: krátkou formou a
+verbózní formou. Typ vnitřního prostředí začíná dle \cite{woowoo} v obou případech malým písmenem.
+
+Krátká forma vnitřního prostředí má dle \cite{woowoo} prefixovou podobu. Definici takového prostředí tvoří dle
+\cite{woowoo} jeho typ, který je uvozen tečkou a je následován dvojtečkou. Na typ prostředí dle \cite{woowoo} přímo
+navazuje tělo (text) prostředí bez jakýchkoli bílých znaků (mezer; a to před tělem i v něm).
+
+Pro ilustraci viz zobecněný formát definice krátké formy vnitřního prostředí \ref{format-woowoo-inner-env-short} nebo
+definice konkrétního typu krátké formy vnitřního prostředí ze studijního textu BI-PKM (tento studijní text využívá
+existující FIT Template šablony) \ref{format-woowoo-pkm-cite}.
+
+\begin{listing}
+    \caption{Obecný formát definice krátké formy vnitřního prostředí WooWoo dokumentu}
+    \label{format-woowoo-inner-env-short}
+    \begin{minted}[breaklines]{text}
+... text text .vnitrniProstredi:tělo text text ...
+    \end{minted}
+\end{listing}
+
+\begin{listing}
+    \caption{Krátká forma vnitřního prostředí ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-cite}
+    \begin{minted}[breaklines]{text}
+.cite:ieee754
+    \end{minted}
+\end{listing}
+
+Verbózní forma vnitřního prostředí má dle \cite{woowoo} postfixovou podobu. Definici takového prostředí tvoří dle
+\cite{woowoo} jeho tělo (text) obklopené dvojitými horními uvozovkami. Na tělo prostředí dle \cite{woowoo} přímo
+navazuje jeho typ, který je uvozen tečkou (mezi ukončující uvozovkou těla a tečkou není mezera). Tělo prostředí může
+v sobě dále obsahovat další vnitřní prostředí. Na typ prostředí může dle \cite{woowoo} dále volitelně navazovat číselná
+reference do meta-bloku textového bloku, v němž je vnitřní prostředí obsaženo. Tato reference je od typu prostředí dle
+\cite{woowoo} opět oddělena tečkou.
+
+Pro ilustraci viz zobecněný formát definice verbózní formy vnitřního prostředí \ref{format-woowoo-inner-env-verbose}
+nebo definice konkrétního typu verbózní formy vnitřního prostředí (s číselnou referencí) ze studijního textu BI-PKM
+(tento studijní text využívá existující FIT Template šablony) \ref{format-woowoo-pkm-notion}.
+
+\begin{listing}
+    \caption{Obecný formát definice verbózní formy vnitřního prostředí WooWoo dokumentu}
+    \label{format-woowoo-inner-env-verbose}
+    \begin{minted}[breaklines]{text}
+... text text ...
+... text "tělo tělo".vnitrniProstredi.1 text ...
+... text text ...
+  1:
+    klic: hodnota
+    \end{minted}
+\end{listing}
+
+\begin{listing}
+    \caption{Verbózní forma vnitřního prostředí ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-notion}
+    \begin{minted}[breaklines]{text}
+"čísla s plovoucí desetinnou čárkou".notion.1
+    \end{minted}
+\end{listing}
+
+Déle dle \cite{woowoo} existují dvě zkrácené formy verbózních vnitřních prostředí, které používají před jeho typem
+namísto tečky zavináč \mintinline{text}{@}, respektive křížek \mintinline{text}{#}. Za zavináčem je pak namísto
+standardního formátu typu vnitřního prostředí číslo. Tyto zkrácené formy už nemohou být následovány číselnou
+referencí. Chování těchto zkrácených forem je dále určeno šablonou. Ve starší verzi WooWoo se navíc namísto zavináče
+používala tečka.
+
+\subsection{Další konstrukty}
+
+\#todo
+
+\subsection{FIT Template}
+
+\#todo
+
+\subsection{Problematická místa}
+
+\#todo
