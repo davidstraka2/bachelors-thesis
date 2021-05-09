@@ -1,1 +1,20 @@
-\#todo AST, parsování
+Pro další práci s WooWoo dokumentem (ať už jde o překlad do HTML, vytvoření přehledu určitých prvků a další) je vhodné z
+dokumentu vygenerovat abstraktní syntaktický strom (AST) – stromovou strukturu, která popisuje skutečný sémantický
+význam zdroje (na rozdíl od derivačního stromu, CST, který zachycuje spíše přesnou syntaktickou strukturu). Pro
+vygenerování AST bude nutné vytvořit parser. Toho je možné docílit mnoha způsoby.
+
+Jedním způsobem je využít parser generátorů – programů, kterým je dodán popis gramatiky v nějakém požadovaném formátu,
+na jehož základě samy vygenerují výsledný parser. Většina parser generátorů však přijímá nejvýše bezkontextové
+gramatiky. Pro případnou podporu kontextově závislých prvků jazyka je možno vygenerovaný parser vlastními silami
+upravit, což však vyžaduje pokročilé znalosti v oblasti tvorby parserů.
+
+Pro generování AST proto vytvoříme vlastní parser, který bude pro zjednodušení implementace vnitřně využívat
+(rozšířených) regulárních výrazů pro parsování těch částí WooWoo formátu, kde to bude možné. Pro parsování neregulárních
+bezkontextových prvků WooWoo formátu (například správné určení začínajících a ukončovacích tokenů vnitřních prostředí)
+nebo kontextově závislých prvků (například změna významu na základě úrovně odsazení) bude potřeba použití (rozšířených)
+regulárních výrazů doplnit o vlastní funkcionalitu, jako různá počítadla, zásobníky apod.
+
+AST obecně nemají nějaký standardně používaný formát (viz \cite{ast-explorer}), liší se parser od parseru, ale v mnoha
+existujících AST (pro jiné jazyky) si můžeme všimnout častých prvků, které bude vhodné v našem AST také zahrnout. Jedná
+se například o pozici (řádek, sloupec a odsazení od začátku souboru) začátku a konce vrcholu stromu. Tato pozice umožní
+například přesnou navigaci mezi částmi dokumentu, synchronní posuv náhledu se zdrojem a mnoho dalších funkcionalit.

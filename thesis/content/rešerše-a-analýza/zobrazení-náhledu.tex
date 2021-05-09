@@ -1,2 +1,42 @@
-\#todo Transformace z AST do HTML, zobrazování matematických výrazů (KaTeX vs. MathJax vs. nativní TeX instalace,
-porovnání verzí MathJax), zobrazování grafických objektů (TikZ diagramy, TikZJax vs. nativní TeX instalace)
+V analýze požadavků \ref{analyza-pozadavku} se nachází řada funkčních požadavků na živý náhled dokumentu. Jedním
+požadavkem je samotné zobrazení náhledu, dalším požadavkem pak jeho živá aktualizace při úpravě dokumentu.
+
+Pro zobrazení náhledu bude AST dokumentu získaný parsováním přeložen do HTML, které bude následně zobrazeno v novém
+podoknu Atomu. Toto HTML je možno libovolně stylovat díky CSS (případně jeho nadstavby LESS, jejíž podporu má v sobě
+Atom podle \cite{atom-docs} integrovanou). Je však dobré mít na paměti, že uživatel může chtít použít různá témata a je
+tak lepší nechat co nejvíce stylování právě na nich a v případě nutnosti úpravy stylů dělat takové volby, které budou
+čitelné napříč populárními tématy (například tedy není dobré nastavit barvu textu napevno na bílou či naopak černou).
+Dále je s tímto HTML možno dál libovolně pracovat za pomoci JavaScriptu a například tak náhled doplnit o interaktivní
+prvky.
+
+Živá aktualizace náhledu bude zajištěna díky API Atomu, které dle \cite{atom-docs} umožňuje reagovat na různé změny v
+editoru. Při detekci změny pak bude nový obsah opět přeložen na HTML a zobrazen uživateli. Implementace nějakého
+chytřejšího systému, kde by se aktualizoval pouze pozměněný obsah, by zřejmě byla složitější a pravděpodobně ani ne
+zcela nutná. Je však namístě nějakým způsobem cachovat objekty náročnější na překlad či vykreslení, aby bylo dosaženo
+přiměřené rychlosti odezvy.
+
+\subsection{Zobrazování matematických výrazů}
+
+Dále je kladen požadavek na zobrazování matematických výrazů v náhledu dokumentu. Pro zapisování matematických výrazů
+aktuálně v praxi používaná WooWoo šablona FIT Template používá \LaTeX{} matematická prostředí. Snažit se přesně zobrazit
+tyto výrazy není vůbec jednoduché a je tak namístě použít k jejich zobrazování buď nativní instalaci prostředí \LaTeX{},
+nebo jednu z mnohých knihoven pro zobrazování matematických výrazů na webu.
+
+Výhodou použití nativní instalace je kvalita výstupu a samozřejmě maximální možná podpora \LaTeX{} maker. Nevýhodou
+použití nativní instalace je nedostatečná rychlost. Generování obrázku z jediného jednoduchého výrazu trvá řádově
+vteřiny (vyzkoušeno na vlastním stroji). Vzhledem k velmi vysokému množství matematických výrazů ve WooWoo zdrojích
+existujících studijních textů (řádově vyšší desítky až stovky výrazů na kapitolu, viz \cite{pkm}) by tak i při spuštění
+více podprocesů nemohlo být docíleno akceptovatelné odezvy.
+
+Druhou možností je již zmíněné využití knihoven, jejichž výhodou je oproti nativní instalaci právě rychlost. Další
+výhodou těchto knihoven je, že nevznikají externí závislosti (jejichž instalaci si musí koncový uživatel pohlídat).
+Nevýhodou knihoven je nižší pokrytí podporovaných \LaTeX{} maker, případně nižší kvalita sazby (která se však mezi
+knihovnami výrazně liší také v závislosti na jejich nastavení). Dvě populární knihovny jsou MathJax a KaTeX, které
+déle blíže porovnáme. U knihovny MathJax navíc je vhodné oddělit od sebe pro účely porovnání MathJax 2.x a MathJax 3.x,
+protože novější velká verze je dle \cite{mathjax3-docs} od základu přepsána a funguje v mnohých ohledech jinak.
+
+\#todo KaTeX vs. MathJax, porovnání verzí MathJax
+
+\subsection{Zobrazování grafických objektů}
+
+\#todo TikZ diagramy, TikZJax vs. nativní TeX instalace

@@ -1,1 +1,40 @@
-\#todo Tree-sitter vs. TextMate based gramatiky, limitace
+Podle \cite{atom-docs} v sobě Atom nabízí zabudované dva způsoby, jak přidat podporu zvýrazňování syntaxe pro nové
+jazyky.
+
+První, dle \cite{atom-docs} novější způsob je založený na nástroji Tree-sitter. Tree-sitter je dle \cite
+{tree-sitter-docs} parser generátor, který na základě bezkontextové gramatiky zapsané v jeho vlastním formátu vygeneruje
+parser, jehož výstupem je derivační strom (CST). Aby pak fungoval efektivně, mělo by dle \cite{tree-sitter-docs} navíc
+jít o LR(1) gramatiku. Vygenerovaný parser je dle \cite{tree-sitter-docs} v jazyku C a lze ho pak použít i v jiných
+aplikacích. Aby mohl být použit v Atomu, musí být dle \cite{atom-docs} zkompilován pro požadované platformy, spolu s tím
+vygenerovány \textit{bindings} pro Node.js a tento celý výstup publikován jako knihovna na npm. Tuto knihovnu následně
+dle \cite{atom-docs} využije vytvářený \textit{package} přidávající do Atomu podporu nového jazyka s pomocí \textit
+{grammar} souboru v CSON nebo JSON formátu, ve kterém dále specifikuje, které vrcholy CST připadají kterému \textit
+{grammar scope} (\textit{grammar scopes} v podstatě určují CSS třídu, která bude kódu, který odpovídá danému vrcholu,
+přiřazena). Těmto \textit{grammar scopes} pak dle \cite{atom-docs} s pomocí odpovídajících CSS tříd přiřazují styly
+různé další \textit{packages} přidávající do Atomu syntaktická témata.
+
+Výhodou tohoto přístupu je, že podle \cite{atom-docs} funguje rychleji a přesněji, než dále zmíněná alternativa.
+Nevýhodou je, že i dle Tree-sitter dokumentace \cite{tree-sitter-docs} je náročný na realizaci. Navíc vzhledem ke
+kontextově závislým prvkům WooWoo formátu by takto vzniklý parser stejně nebyl schopen WooWoo parsovat zcela korektně a
+nemohl by tak být sám o sobě využit například pro překlad do HTML pro náhled dokumentu.
+
+Druhým způsobem je dle \cite{atom-docs} vytvoření gramatiky ve formátu založeném na TextMate gramatikách. Jedná se o
+poměrně jednoduchý systém, který dle \cite{atom-docs} využívá (rozšířené) regulární výrazy. Postup vytvoření \textit
+{grammar} souboru je zde dle \cite{atom-docs} podobný, jako v předchozím případě, pouze namísto vrcholů CST přiřazujeme
+\textit{grammar scopes} vzorům popsaným (rozšířenými) regulárními výrazy (a samozřejmě zde odpadá definice použité
+parser knihovny). Vnitřně pak dle \cite{atom-docs} Atom využívá engine (rozšířených) regulárních výrazů Oniguruma,
+konkrétní podporované konstrukty v (rozšířených) regulárních výrazech jsou tedy dané právě tímto enginem.
+
+Výhodou tohoto přístupu je jednoduchost implementace. Další výhodou je, že podobný způsob zvýrazňování syntaxe využívají
+další populární editory (např. TextMate, po kterém je tento způsob zvýrazňování syntaxe pojmenovaný, dále třeba VS Code
+\cite{vscode-docs} nebo Sublime Text \cite{sublime-text-docs}) a vytvořená gramatika by se tak dala s drobnými úpravami
+použít i v nich. Nevýhodou tohoto přístupu je již zmiňovaná nižší rychlost a přesnost. Déle je nutno zmínit, že
+Tree-sitter gramatiky jsou aktuálně dle \cite{atom-docs} preferovány a Atom na ně chce postupně přejít. Nicméně vzhledem
+k velkému množství existujících TextMate gramatik není pravděpodobné, že by k nějakému úplnému ukončení jejich podpory
+došlo v dohledné době.
+
+Atom dále dle \cite{atom-docs} umožňuje namísto JSON/CSON souboru popsat gramatiku přímo v rámci API a dynamicky ji měnit
+za běhu. Toho využivá například \textit{package} tasks \cite{atom-package-tasks}. V našem případě by toto mohlo být
+užitečné například pro přesnější zvýrazňování syntaxe v závislosti na použité šabloně. Dále by tento přístup mohl
+zmenšit opakování kódu (za předpokladu že by obdobné regulární výrazy byly využity také pro parsování) a lepší
+testovatelnost.

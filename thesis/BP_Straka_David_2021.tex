@@ -32,6 +32,7 @@
 \usepackage{enumitem}
 
 \usepackage{luavlna}
+\usepackage[all]{nowidow}
 
 \usepackage{minted}
 \counterwithin{listing}{chapter}
@@ -87,7 +88,9 @@
 	\input{content/závěr}
 \end{conclusion}
 
-\printbibliography
+\begin{sloppypar}
+	\printbibliography
+\end{sloppypar}
 
 \appendix
 

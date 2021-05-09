@@ -489,7 +489,9 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela (vr\'atane komer\v cn\'eho vyu\v
 	\fi
 
 	\if@keywordscsdefined
+		\begin{sloppypar}
 		\paragraph*{Kl{\' i}{\v c}ov{\' a} slova} \thekeywordscs{}
+		\end{sloppypar}
 	\else
 		\ClassError{FITthesis}{Czech keywords unspecified}{Specify the keywords in Czech of your thesis using \keywordsCS command.}
 	\fi
@@ -504,7 +506,9 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela (vr\'atane komer\v cn\'eho vyu\v
 	\fi
 
 	\if@keywordsendefined
+		\begin{sloppypar}
 		\paragraph*{Keywords} \thekeywordsen{}
+		\end{sloppypar}
 	\else
 		\ClassError{FITthesis}{English keywords unspecified}{Specify the keywords in English of your thesis using \keywordsEN command.}
 	\fi
@@ -553,7 +557,9 @@ sp\^ osobom, ktor\'y nezni\v zuje hodnotu Diela (vr\'atane komer\v cn\'eho vyu\v
 	\listoftablescond
 
 	\cleardoublepage
-	\listoflistings
+	\begin{sloppypar}
+		\listoflistings
+	\end{sloppypar}
 
 	\pagestyle{ruled}
 	\mainmatter

@@ -33,10 +33,12 @@ rozšířil a pozměnil \cite{atom-package-atom-ctags-github}. Nabízí se tedy 
 lépe. Tento fork ale obsahuje dle jeho issue trackeru \cite{atom-package-atom-ctags-github} nemalé množství
 problematických chyb a jeho vývoj či údržba je dle \cite{atom-package-atom-ctags-github} neaktivní od roku 2017.
 
+\begin{sloppypar}
 Dalšími možnostmi je tedy vytvořit nový fork Symbols View \textit{package} a upravit jej dle vlastních potřeb, nebo
 rozšířit Ctags o vlastní parser (což by ale možná také nakonec vyžadovalo drobné úpravy Symbols View \textit{package}).
 Zde už se však zdá jednodušší vytvořit si vlastní přehled značek v otevřeném souboru, kde implementace bude převážně
 stejná či hodně podobná jako implementace zobrazení přehledu částí dokumentu.
+\end{sloppypar}
 
 Alternativně by ještě bylo možné vytvořit \textit{language server} pro komunikaci s Atomem přes Language Server
 Protocol (viz \cite{lsp-docs}), kterou na straně Atomu umožňuje knihovna Atom Language Server Protocol Client

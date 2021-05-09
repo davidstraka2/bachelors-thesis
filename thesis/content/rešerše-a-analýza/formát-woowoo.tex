@@ -185,9 +185,12 @@ křehkého vnějšího prostředí ze stejného zdroje \ref{format-woowoo-pkm-ti
   \draw[thick,->] (-2,0) -- (2,0) node[above] {$\Re$};
   \draw[thick,->] (0,-2) -- (0,2) node[left] {$\Im$};
   \draw[gray,dashed] (\a,-2) -- (\a,2) (-2,\b) -- (2,\b);
-  \fill[black] (\a,\b) circle (0.05) node[anchor=south west] {$a+\ii b$};
-  \draw[thick] (.05,\b) -- (-.05,\b) node[anchor=south east] {$b$};
-  \draw[thick] (\a,.05) -- (\a,-.05) node[anchor=north west] {$a$};
+  \fill[black] (\a,\b) circle (0.05) node[anchor=south west]
+    {$a+\ii b$};
+  \draw[thick] (.05,\b) -- (-.05,\b) node[anchor=south east]
+    {$b$};
+  \draw[thick] (\a,.05) -- (\a,-.05) node[anchor=north west]
+    {$a$};
     \end{minted}
 \end{listing}
 
@@ -260,12 +263,100 @@ používala tečka.
 
 \subsection{Další konstrukty}
 
-\#todo
+WooWoo dokument může obsahovat jednořádkové komentáře, které jsou uvozeny procentem \mintinline{text}{%}. Komentáře
+nemohou být v těle křehkých vnějších prostředí. V současnosti ve \cite{woowoo} není definován způsob, jak znak procenta
+vložit mimo křehká vnější prostředí tak, aby nezačal komentář.
+
+Dokument také může být rozdělen do více souborů. Obsah z jiného souboru se do dokumentu vloží s pomocí direktivy
+\mintinline{text}{.include cesta/k/souboru.woo}. Tato direktiva v současnosti není ve specifikaci \cite{woowoo} popsána
+a není tak například známo, jak přesně by se vložil soubor s mezerami ve své cestě.
 
 \subsection{FIT Template}
 
-\#todo
+FIT Template je WooWoo šablona, která je aktuálně v praxi používána pro všechny existující studijní texty vytvořené s
+pomocí WooWoo.
+
+Specifikace \cite{woowoo} uvádí, že tato šablona dělí dokument na následující části: kapitoly (\mintinline{text}
+{.Chapter}), sekce (\mintinline{text}{.Section}) a podsekce (\mintinline{text}{.Subsection}). Části dokumentu mají dle
+\cite{woowoo} jednu vyžadovanou položku metadat, značku \mintinline{text}{label}. Tyto značky jsou dle \cite{woowoo}
+využívány pro reference částí dokumentu.
+
+\begin{sloppypar}
+Bloky tato šablona podle \cite{woowoo} považuje za odstavce textu. FIT Template dle \cite{woowoo} poskytuje následující
+objekty: \mintinline{text}{.Definition}, \mintinline{text}{.Corollary}, \mintinline{text}{.Lemma}, \mintinline{text}
+{.Theorem}, \mintinline{text}{.Proof}, \mintinline{text}{.Remark}, \mintinline{text}{.Example}, \mintinline{text}
+{.Figure}, \mintinline{text}{.Question} a \mintinline{text}{.Table}.
+\end{sloppypar}
+
+Dále dle \cite{woowoo} FIT Template poskytuje následující vnější prostředí: \mintinline{text}{.align}, \mintinline{text}
+{.caption}, \mintinline{text}{!codeblock}, \mintinline{text}{.enumerate}, \mintinline{text}{.equation}, \mintinline
+{text}{.image}, \mintinline{text}{.itemize}, \mintinline{text}{.quote}, \mintinline{text}{!sage}, \mintinline{text}
+{.solution}, \mintinline{text}{!tabular} a \mintinline{text}{!tikz}. Vnější prostředí bez hlavičky šablona považuje za
+zkratku pro prostředí \mintinline{text}{.equation}.
+
+\begin{sloppypar}
+Tato šablona poskytuje dle \cite{woowoo} následující vnitřní prostředí: \mintinline{text}{.cite}, \mintinline{text}
+{.code}, \mintinline{text}{.emphasize}, \mintinline{text}{.eqref}, \mintinline{text}{.footnote}, \mintinline{text}
+{.item}, \mintinline{text}{.math}, \mintinline{text}{.notion}, \mintinline{text}{.quoted}, \mintinline{text}{.reference}
+a \mintinline{text}{.todo}. Zkrácenou formu vnitřního prostředí s mřížkou FIT Template dle \cite{woowoo} považuje za
+zkratku \mintinline{text}{.reference}, zkrácenou formu se zavináčem pak za číselý odkaz do meta-bloku. Déle dle
+\cite{woowoo} šablona určuje umístění textu mezi dva dolary (\mintinline{text}{$text text$}) jako zkratku pro prostředí
+\mintinline{text}{.math}.
+\end{sloppypar}
 
 \subsection{Problematická místa}
 
-\#todo
+Vzhledem k tomu, že je WooWoo nový formát, některé věci v něm nejsou ještě zcela dořešené. Například možnost vložení
+procenta mimo křehká prostředí bez toho, aby začalo nový řádkový komentář. Stejně tak ve FIT Template šabloně ještě
+nejsou zcela dořešena například vnější prostědí \mintinline{text}{.enumerate}, \mintinline{text}{.itemize} či
+\mintinline{text}{!tabular}.
+
+S tím jak se formát vyvíjí, obsahují existující dokumenty syntaktické prvky ze starších verzí WooWoo, jako například
+zkrácenou formu vnitřního prostědí s tečkou namísto zavináče. Viz příklad \ref{format-woowoo-pkm-old-shorthand} přímo ze
+zdroje studijního textu k BI-PKM.
+
+\begin{listing}
+    \caption{Starší syntaxe zkrácené formy vnitřního prostředí ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-old-shorthand}
+    \begin{minted}[breaklines]{text}
+Matematika je velmi úzce spjata s tzv.
+"vědeckou metodou poznání".1, o které lze bez velkého přehánění
+prohlásit, že tvoří základ naší civilizace. Častým lidským cílem
+je hledání hlubšího porozumnění světa a řešení různých problémů.
+Matematika v této činnosti nehraje roli pouhého početní stroje.
+Nejprve je nutné problém analyzovat, rozebrat ho na části a
+zkoumat jejich vztahy a chování. Typicky dojde k vytvoření
+matematického modelu, který (více či méně) dobře vystihuje náš
+problém. Následně se v rámci tohoto abstraktního modelu snažíme
+dobrat k závěrům a poznání původního problému.
+  1:
+    link: 'https://en.wikipedia.org/wiki/Scientific_method'
+    \end{minted}
+\end{listing}
+
+Existující dokumenty také obsahují prvky, které čistě z pohledu specifikace WooWoo formátu nejsou zcela validní.
+Například prostředí \mintinline{text}{!tabular} v sobě obsahují vniřní prostředí s matematickými výrazy \cite{pkm}. Pro
+jejich korektní zpracování by tak muselo dojít k další transformaci, přestože jde o obsah křehkého prostředí. Obdobně
+například položka \mintinline{text}{title} v meta-blocích některých objektů obsahuje matematické výrazy (navíc pro ně
+ani není použita stejná syntaxe jako pro zkratku vnitřního matematického prostředí \mintinline{text}{.math}, viz příklad
+ze zdroje studijního textu k BI-PKM \ref{format-woowoo-pkm-title}).
+
+\begin{listing}
+    \caption{Meta-blok obsahující matematické výrazy ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \label{format-woowoo-pkm-title}
+    \begin{minted}[breaklines]{text}
+.Proof:
+  title: 'Důkaz iracionality \(\sqrt{2}\)'
+  show: true
+    \end{minted}
+\end{listing}
+
+Déle existující dokumenty obsahují prvky, které jsou zcela validní, ale jejich zobrazení v náhledu nebude jednoduché.
+Jedná se například o číselné reference do meta-bloku ve vnitřních i vnějších prostředích obsahujících matematické
+výrazy.
+
+Formát také obsahuje prvky, které nejsou regulární (například správné párování začátků a konců vnitřních prostředí) a
+také prvky, které nejsou ani bezkontextové (například změna významu na základě úrovně odsazení je kontextuálně závislá).
+
+Tato problematická místa bude potřeba dále zvážit ať už při tvorbě parseru, zobrazení náhledu, implementaci navigačních
+prvků, realizaci zvýrazňování syntaxe nebo výběru knihoven a dalších nástrojů.
