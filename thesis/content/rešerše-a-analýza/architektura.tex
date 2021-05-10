@@ -1,1 +1,64 @@
-\#todo
+Atom \textit{packages} je dle \cite{atom-docs} možno tvořit v jazycích JavaScript nebo v CoffeeScript. Další možností je
+samozřejmě napsat \textit{package} v jiném jazyce, který je možno do jednoho z Atomem podporovaných jazyků přeložit.
+
+Dle \cite{atom-docs} je potřeba, aby \textit{package} obsahoval v kořenovém adresáři meta-soubor \mintinline{text}
+{package.json}. V tomto souboru bude dle \cite{atom-docs} uveden například unikátní název \textit{package} a jeho verze,
+dále zde může být uveden jeho popis, autor a kontakt na něj, odkaz na issue tracker, odkaz na repozitář se zdrojem či
+jiné webové stránky a mnoho dalších informací ve stylu npm \textit{packages}. Dále zde dle \cite{atom-docs} mohou být
+uvedeny různé závislosti z npm, které \textit{package} potřebuje ke svému běhu (nebo pouze k vývoji). Tyto závislosti
+jsou pak dle \cite{atom-docs} automaticky nainstalovány při instalaci samotného \textit{package}. Také zde podle \cite
+{atom-docs} může být uvedena cesta k \textit{main} souboru \textit{package} (pokud není uvedena, použije se výchozí
+možnost \mintinline{text}{index.coffee} nebo \mintinline{text}{index.js}) nebo seznam příkazů, které \textit{package} v
+Atomu aktivují.
+
+Hlavní modul (\textit{main} soubor) \textit{package} může dle \cite{atom-docs} implementovat následující funkce, jejichž
+volání spravuje sám Atom:
+\begin{itemize}
+    \begin{sloppypar}
+    \item \mintinline{js}{activate(state)} – tato funkce je volána, když je \textit{package} aktivován (například po
+        zavolání příkazu, který je v \mintinline{text}{package.json} definován jako aktivační) a jejím prvním argumentem
+        je stav z posledního volání \mintinline{js}{serialize};
+    \end{sloppypar}
+    \item \mintinline{js}{initialize(state)} – tato funkce je podobná funkci \mintinline{js}{activate(state)}, je ale
+        volána dříve, ještě před deserializací (při volání \mintinline{js}{activate(state)} je zajištěno, že je
+        pracovní prostředí Atomu připraveno);
+    \begin{sloppypar}
+    \item \mintinline{js}{serialize} – tato fukce je volána, když je zavíráno okno Atomu a vrací JSON popisující stav
+        \mintinline{text}{package}, který je později podán funkci \mintinline{js}{activate(state)} při opětovné
+        aktivaci;
+    \end{sloppypar}
+    \item \mintinline{js}{deactivate} – tato funkce je volána, když je zavírano okno Atomu nebo když je
+        \mintinline{text}{package} deaktivován.
+\end{itemize}
+Dále dle \cite{atom-docs} může hlavní modul exportovat \mintinline{js}{config} objekt definující položky nastavení
+\textit{package}, které si může uživatel přizpůsobit (jejich aktuální hodnotu pak lze získat opět skrze API). Kód
+\textit{package} má dle \cite{atom-docs} vždy k dispozici globální proměnnou \mintinline{js}{atom}, která poskytuje
+přístup k API Atomu. Soubory s JavaScript/CoffeeScript kódem patří dle \cite{atom-docs} do složky \mintinline{text}
+{lib}, soubory s testy pak do složky \mintinline{text}{spec}.
+
+Dále může \textit{package} dle \cite{atom-docs} obsahovat různé složky s meta-soubory, které definují určitou
+funkcionalitu \textit{package} v rámci Atomu (jedná se o jednodušší alternativu k použití API, které má ale samozřejmě
+mnohem širší možnosti). Takovými složkami jsou dle \cite{atom-docs} například složky \mintinline{text}{grammars} s
+\textit{grammar} soubory přidávajícími do Atomu podporu zvýrazňování syntaxe pro nové jazyky, \mintinline{text}{keymaps}
+se soubory definujícími klávesové zkratky příkazů \textit{package} (ty si pak může koncový uživatel upravit v
+nastaveních), \mintinline{text}{menus} se soubory přidávajícími položky do hlavního menu a kontextového menu Atomu,
+\mintinline{text}{snippets} se soubory definujícími úryvky kódu pro rychlé použití nebo \mintinline{text}{styles} s CSS
+či Less soubory upravujícími styly Atomu.
+
+Atom také dle \cite{atom-docs} umožňuje poskytnout či použít \textit{services}, verzovaná API, umožňující komunikaci
+napříč více \textit{packages}. Tohoto by v budoucnu mohlo být využito pro rozdělení \textit{package} do více částí,
+kde hlavní \textit{package} by například poskytnul \textit{services} pro přidání nových funkcí či tříd pro překlad prvků
+WooWoo AST do HTML. Takto by mohl vzniknout celý ekosystém \textit{packages} pro podporu WooWoo, kde by například jeden
+\textit{package} přidal podporu pro zobrazení matematických výrazů, další \textit{package} by přidal podporu pro
+zobrazení TikZ obrázků a jiný \textit{package}, který by definoval šablonu, by řekl, že závisí na hlavním \textit
+{package} a dalších konkrétních \textit{packages} přidávajících podporu zobrazení dalších prvků. Tento \textit{package}
+by také řekl, jak konkrétně šablona, kterou definuje, nazývá různé typy prostředí, objektů a částí dokumentu. Takto by
+v budoucnu mohlo být docíleno modulární podpory více WooWoo šablon.
+
+Vydaný \textit{package} si podle \cite{atom-docs} uživatelé mohou nainstalovat ze zabudovaného správce \textit{packages}
+(nebo z terminálu s pomocí nástroje apm, který je také součástí Atomu). Aby bylo možno \textit{package} publikovat, musí
+dle \cite{atom-docs} jeho výstupní JavaScript či CoffeeScript soubory (spolu s dalšími podpůrnými soubory) být
+zveřejněny v GitHub repozitáři. Následně je dle \cite{atom-docs} za pomoci nástroje apm možno publikovat buď aktuální
+obsah hlavní větve, kdy apm s pomocí GitHub API sám vytvoří nový release/tag (verze je brána z meta-souboru \mintinline
+{text}{package.json}), nebo je možno vytvořit release/tag vlastními silami a následně nástroji apm říct,
+který konkrétní tag má publikovat.
