@@ -1,5 +1,5 @@
 V analýze požadavků \ref{analyza-pozadavku} se nachází řada funkčních požadavků na živý náhled dokumentu. Jedním
-požadavkem je samotné zobrazení náhledu, dalším požadavkem pak jeho živá aktualizace při úpravě dokumentu.
+požadavkem je \textbf{\ref{F2}}, dalším požadavkem pak \textbf{\ref{F3}}.
 
 Pro zobrazení náhledu bude AST dokumentu získaný parsováním přeložen do HTML, které bude následně zobrazeno v novém
 podoknu Atomu. Toto HTML je možno libovolně stylovat díky CSS (případně jeho nadstavby Less, jejíž podporu má v sobě
@@ -17,26 +17,62 @@ přiměřené rychlosti odezvy.
 
 \subsection{Zobrazování matematických výrazů}
 
-Dále je kladen požadavek na zobrazování matematických výrazů v náhledu dokumentu. Pro zapisování matematických výrazů
-aktuálně v praxi používaná WooWoo šablona FIT Template používá \LaTeX{} matematická prostředí. Snažit se přesně zobrazit
-tyto výrazy není vůbec jednoduché a je tak namístě použít k jejich zobrazování buď nativní instalaci prostředí \LaTeX{},
-nebo jednu z mnohých knihoven pro zobrazování matematických výrazů na webu.
+Dále je kladen funkční požadavek \textbf{\ref{F4}}. Pro zapisování matematických výrazů aktuálně v praxi používaná
+WooWoo šablona FIT Template používá \LaTeX{} matematická prostředí. Snažit se přesně zobrazit tyto výrazy není vůbec
+jednoduché a je tak namístě použít k jejich zobrazování buď nativní instalaci prostředí \LaTeX{}, nebo jednu z mnohých
+knihoven pro zobrazování matematických výrazů na webu.
 
 Výhodou použití nativní instalace je kvalita výstupu a samozřejmě maximální možná podpora \LaTeX{} maker. Nevýhodou
 použití nativní instalace je nedostatečná rychlost. Generování obrázku z jediného jednoduchého výrazu trvá řádově
-vteřiny (vyzkoušeno na vlastním stroji). Vzhledem k velmi vysokému množství matematických výrazů ve WooWoo zdrojích
-existujících studijních textů (řádově vyšší desítky až stovky výrazů na kapitolu, viz \cite{pkm}) by tak i při spuštění
-více podprocesů nemohlo být docíleno akceptovatelné odezvy.
+vteřiny (vyzkoušeno na vlastním stroji s procesorem Intel Core i5 7300HQ, 8 GB RAM, operačním systémem Windows 10).
+Vzhledem k velmi vysokému množství matematických výrazů ve WooWoo zdrojích existujících studijních textů (řádově vyšší
+desítky až stovky výrazů na kapitolu, viz \cite{pkm}) by tak i při spuštění více podprocesů nemohlo být docíleno
+akceptovatelné odezvy.
 
 Druhou možností je již zmíněné využití knihoven, jejichž výhodou je oproti nativní instalaci právě rychlost. Další
 výhodou těchto knihoven je, že nevznikají externí závislosti (jejichž instalaci si musí koncový uživatel pohlídat).
 Nevýhodou knihoven je nižší pokrytí podporovaných \LaTeX{} maker, případně nižší kvalita sazby (která se však mezi
-knihovnami výrazně liší také v závislosti na jejich nastavení). Dvě populární knihovny jsou MathJax a KaTeX, které
-dále blíže porovnáme. U knihovny MathJax navíc je vhodné oddělit od sebe pro účely porovnání MathJax 2.x a MathJax 3.x,
-protože novější velká verze je dle \cite{mathjax3-docs} od základu přepsána a funguje v mnohých ohledech jinak.
+knihovnami výrazně liší také v závislosti na jejich nastavení). Dvěma populárními knihovnami jsou MathJax a KaTeX, které
+mezi sebou dále blíže porovnáme. U knihovny MathJax navíc je vhodné oddělit od sebe pro účely porovnání MathJax 2.x a
+MathJax 3.x, protože novější velká verze je dle \cite{mathjax3-docs} od základu přepsána a funguje v mnohých ohledech
+jinak.
 
-\#todo KaTeX vs. MathJax, porovnání verzí MathJax
+MathJax dle \cite{mathjax} poskytuje kvalitní sazbu matematických výrazů, vstup ve formátech MathML, (La)TeX a ASCIIMath
+a výstup ve formátech HTML + CSS, SVG, nebo MathML ve verzi 3.x (a ve verzi 2.x dle \cite{mathjax2-docs} navíc výstupy
+PreviewHTML a CommonHTML). MathJax v sobě dále dle \cite{mathjax} má zabudované nástroje pro asistenci nevidomým. Dle
+\cite{mathjax3-docs} také podporuje možnost definice vlastních maker. Verze 3.x je dle \cite{mathjax3-docs} rychlejší
+než verze 2.x o zhruba 60 až 80 procent, ale neposkytuje zatím tak širokou podporu maker jako starší verze. MathJax je
+dle \cite{mathjax3-docs} dostupný (mimo jiné) z npm pod permisivní open-source licencí. HTML výstupy \cite{pkm} z WooWoo
+zdroje existujících studijních materiálů využívají pro zobrazování matematických výrazů právě MathJax 2.7.
+
+KaTeX je dle \cite{katex} nejrychlejší knihovna pro zobrazování matematických výrazů na webu, která poskytuje kvalitní
+sazbu jejíž rozložení je založeno na rozložení původního \TeX{}. Dle \cite{katex-docs} také podporuje možnost definování
+vlastních maker. Za vývojem KaTeX stojí podle \cite{katex} Khan Academy a KaTeX je dostupný (mimo jiné) z npm pod
+permisivní open-source licencí. Podle \cite{danmackinlay} KaTeX nenabízí tak širokou podporu matematických maker jako
+MathJax.
+
+Vzhledem k nejširší podpoře matematických maker mezi porovnávanými knihovnami bude pro realizaci nejvhodnější použít
+MathJax 2.x i na úkor menší rychlosti za předpokladu, že bude postačující pro zobrazení živého náhledu. Navíc tím bude
+docíleno parity s existujícími HTML výstupy WooWoo co do podpory zobrazování matematických výrazů. Z dostupných výstupů
+MathJax 2.x bude nejlepší použít SVG, protože je dle \cite{mathjax2-docs} druhý nejrychlejší a oproti nejrychlejšímu
+výstupu PreviewHTML poskytuje dostatečně kvalitní úroveň sazby.
 
 \subsection{Zobrazování grafických objektů}
 
-\#todo TikZ diagramy, TikZJax vs. nativní TeX instalace
+Posledním funkčním požadavkem z oblasti zobrazení náhledu je \textbf{\ref{F5}}. FIT Template šablona a studijní texty,
+které ji využívají, dle \cite{woowoo, pkm} obsahují obrázky popsané \LaTeX{} kódem využívajícím \textit{package} TikZ.
+
+Pro podporu zobrazení těchto objektů se opět nabízí dvě hlavní možnosti – použití nativní instalace \TeX{} distribuce,
+nebo použití knihovny. Nativní instalace bude pravděpodobně mít opět rychlostní nevýhodu (a nevýhodu externí
+závislosti).
+
+Jediná knihovna pro zobrazování TikZ obrázků na webu, kterou se během rešerše podařilo objevit, je knihovna TikZJax.
+Tato knihovna dle \cite{tikzjax-github} využívá originální zdroj \TeX{} zkompilovaný do WebAssembly a její výstup by tak
+teoreticky měl být ekvivalentní výstupu nativní instalace. Bohužel je ale aktuálně dle \cite{tikzjax-github} TikZJax
+distribuován pouze přes CDN, nikoliv například přes npm a při tvorbě produkčního balíčku v sobě zahrnuje soubory písem z
+\LaTeX{} editoru BaKoMa. Tato písma však dle \cite{bakoma-fonts-ctan} neposkytují licenci umožňující volné šíření a
+TikZJax tyto soubory nezahrnuje \cite{tikzjax-github} ve svém repozitáři.
+
+Vzhledem k nefunkčnímu požadavku \textbf{\ref{N2}} a vzhledem k tomu, že výstupy některých obrázků obsažených v
+existujících studijních textech \cite{pkm} za použití lokálního sestavení TikZJax nedosahují bez potřebných souborů
+písem dostačující kvality, bude při realizaci vhodnější použít nativní instalaci \TeX{} distribuce.
