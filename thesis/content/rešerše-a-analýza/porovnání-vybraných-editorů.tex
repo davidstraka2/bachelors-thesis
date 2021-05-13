@@ -1,9 +1,69 @@
 Vzhledem k rozsáhlejším požadavkům na rozšíření uživatelského prostředí editoru k přehledné prezentaci logické struktury
 dokumentů se přímo vybízí využít webové technologie, jako jsou strukturovací jazyk HTML a stylovací jazyk CSS (nebo
-nějaká z jeho nadstaveb), jež jsou k přehledné prezentaci dokumentů přímo stvořeny. \cite{w3-html-css}
+nějaká z jeho nadstaveb), jež si dle \cite{w3-html-css} kladou za cíl právě přehlednou prezentaci dokumentů.
 
-Využití těchto technologií v desktopových aplikacích umožňuje framework Electron \cite{electron-docs}, na němž je
-postaveno hned několik populárních open-source editorů zdrojových kódů. Tyto editory dále porovnáme z hlediska jejich
-vlastností a možností pro jejich rozšíření.
+Využití těchto technologií v desktopových aplikacích umožňuje framework Electron \cite{electron-docs}, který v sobě
+spojuje webový prohlížeč Chromium a JavaScript \textit{runtime} Node.js. Na tomto frameworku je postaveno hned několik
+populárních open-source editorů zdrojových kódů. Tyto editory dále porovnáme z hlediska jejich vlastností a možností pro
+jejich rozšíření.
 
-\#todo Atom vs. VS Code vs. Light Table
+\subsection{Atom}
+
+Atom je editor aktivně vyvíjený společností GitHub. Dle \cite{atom-docs} je Atom vytvořen převážně v jazyce
+JavaScript a jeho starší části také v jazyce CoffeeScript. Tyto jazyky je pak dle \cite{atom-docs} také možné použít pro
+vytváření rozšíření zvaných \textit{packages}. Tato rozšíření mají dle \cite{atom-docs} kromě přístupu k rozsáhlému API
+Atomu také plný přístup k jeho DOM a mohou tak libovolně modifikovat jeho uživatelské rozhraní. Dále dle \cite
+{atom-docs} mohou rozšíření upravovat styly Atomu za pomoci CSS nebo Less. Rozšíření si také podle \cite{atom-docs}
+mohou vzájemně poskytovat verzovaná APIs. Rozšíření je dle \cite{atom-docs} možno publikovat v oficiálním repozitáři,
+odkud si je koncoví uživatelé mohou nainstalovat přímo z rozhraní Atomu. Atom také dle \cite{atom-docs} poskytuje
+integrovaný systém pro testování rozšíření při jejich tvorbě. Architektura Atomu je dle \cite{atom-docs} vysoce
+modulární (mnoho funkcionalit, které jsou v Atomu poskytovány, je odděleno do samostatných \textit{core packages},
+které jsou v Atomu předinstalovány).
+
+Rozšiřitelnost a přívětivé uživatelské rozhraní jsou dle \cite{atom-docs} hlavními cíli Atomu. Atom dále podle \cite
+{atom-docs} poskytuje rozšiřitelný systém pro zvýrazňování syntaxe, změnu témat syntaxe a témat uživatelského rozhraní,
+integrovanou podporu práce s nástrojem Git, \textit{core package} pro kontrolu pravopisu, oficiální \textit{package} pro
+živou kolaborativní editaci textu a mnoho dalších užitečných funkcionalit. Atom má kolem sebe rozsáhlou aktivní komunitu
+(dle \cite{atom-github} 55 tisíc \textit{stars}, 16 tisíc forků a stovky issues u jeho veřejného GitHub repozitáře).
+
+\subsection{Visual Studio Code}
+
+Visual Studio Code (zkráceně VS Code) je editor aktivně vyvýjený společností Microsoft. Dle \cite{vscode-docs} je VS
+Code vytvořen převážně v jazyce TypeScript. TypeScript a JavaScript je pak dle \cite{vscode-docs} možno přímo použít pro
+vývoj rozšíření. Rozšíření mají dle \cite{vscode-docs} přístup k rozsáhlému VS Code API, které také umožňuje různé
+úpravy uživatelského rozhraní editoru. Narozdíl od Atomu však VS Code dle \cite{vscode-docs} kvůli dosažení většího
+výkonu či odezvy neumožňuje rozšířením plný přístup k jeho DOM. V současnosti tak API \cite{vscode-docs} nenabízí
+například možnost přidání horní lišty s nástroji. Rozšíření je také podle \cite{vscode-docs} možno publikovat v
+oficiálním \uv{obchodě}, odkud si je opět mohou koncoví uživatelé nainstalovat přímo z rozhraní VS Code. Stejně jako
+Atom poskytuje také VS Code dle \cite{vscode-docs} integrovaný systém pro testování rozšíření.
+
+VS Code dále dle \cite{vscode-docs} poskytuje všechny z výše uvedených funkcionalit Atomu (rozšiřitelné zvýrazňování
+syntaxe, podpora různých témat, integrovaná podpora Git a další). VS Code má ještě rozsáhlejší komunitu než Atom (dle
+\cite{vscode-github} 116 tisíc \textit{stars}, téměr 19 tisíc forků a tisíce issues u jeho veřejného GitHub repozitáře).
+
+\subsection{Light Table}
+
+Light Table je editor vyvýjený menší společností Kodowa. Jeho vývoj či údržba již není příliš aktivní – i přes občasný
+\cite{light-table-github} \textit{commit} ve veřejném repozitáři vyšla nejaktuálnější verze v roce 2016. Dle \cite
+{light-table-github} je Light Table vytvořen v jazyce ClojureScript a rozšíření (\textit{plugins}) by měla být tvořena
+také v tomto jazyce. Dokumentace \cite{light-table-docs} tohoto editoru je však bohužel zejména v oblasti tvorby
+rozšíření spíše nedostačující (sekce k tvorbě a publikaci rozšíření mají jednotky odstavců). Rozšíření je dle \cite
+{light-table-docs} možné publikovat ve formě \textit{pull request} s meta-soubory do veřejného GitHub repozitáře
+(\textit{pull request} pak musí být autory Light Table schválen a spojen do hlavní větve). Uživatel si pak může
+rozšíření nainstalovat přímo z rozhraní Light Table. Z dokumentace \cite{light-table-docs} není zřejmé, nakolik může
+rozšíření modifikovat uživatelské rozhraní a jestli má přímý přístup k DOM.
+
+Dle \cite{light-table-docs} Light Table poskytuje okamžitou zpětnou vazbu při psaní kódu a umožňuje do editoru vložit
+například grafy, hry, vizualizace a další objekty. Light Table má z porovnávaných editorů nejmenší komunitu (dle \cite
+{light-table-github} přes 11 tisíc \textit{stars}, téměr tisíc forků a nižší stovky issues u jeho veřejného GitHub
+repozitáře).
+
+\subsection{Závěr porovnání}
+
+Všechny tři porovnávané editory jsou dle \cite{atom-github, vscode-github, light-table-github} dostupné na aktuálních
+verzích všech běžně používaných desktopových operačních systémů (Windows, macOS, Linuxové distribuce) pod permisivními
+open-source licencemi.
+
+Na základě provedeného porovnání se jeví Atom jako nejvhodnější volba pro další rešerši, analýzu a následnou realizaci,
+a to díky jeho kvalitní dokumentaci, rozsáhlé komunitě pro řešení případných problémů a zejména díky z porovnávaných
+editorů největší míře modifikovatelnosti.

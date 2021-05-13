@@ -13,10 +13,11 @@ dle \cite{atom-docs} využije vytvářený \textit{package} přidávající do A
 přiřazena). Těmto \textit{grammar scopes} pak dle \cite{atom-docs} s pomocí odpovídajících CSS tříd přiřazují styly
 různé další \textit{packages} přidávající do Atomu syntaktická témata.
 
-Výhodou tohoto přístupu je, že podle \cite{atom-docs} funguje rychleji a přesněji, než dále zmíněná alternativa.
-Nevýhodou je, že i dle Tree-sitter dokumentace \cite{tree-sitter-docs} je náročný na realizaci. Navíc vzhledem ke
-kontextově závislým prvkům WooWoo formátu by takto vzniklý parser stejně nebyl schopen WooWoo parsovat zcela korektně a
-nemohl by tak být sám o sobě využit například pro překlad do HTML pro náhled dokumentu.
+Výhodou tohoto přístupu je, že podle \cite{atom-docs} funguje rychleji a přesněji (parser je založený na bezkontextové
+gramatice namísto rozšířených regulárních výrazů), než dále zmíněná alternativa. Nevýhodou je, že i dle Tree-sitter
+dokumentace \cite{tree-sitter-docs} je náročný na realizaci. Navíc vzhledem ke kontextově závislým prvkům WooWoo formátu
+by takto vzniklý parser stejně nebyl schopen WooWoo parsovat zcela korektně a nemohl by tak být sám o sobě využit
+například pro překlad do HTML pro náhled dokumentu.
 
 Druhým způsobem je dle \cite{atom-docs} vytvoření gramatiky ve formátu založeném na TextMate gramatikách. Jedná se o
 poměrně jednoduchý systém, který dle \cite{atom-docs} využívá (rozšířené) regulární výrazy. Postup vytvoření \textit

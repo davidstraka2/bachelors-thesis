@@ -9,10 +9,11 @@ knihovnu (4 až 12 milionů týdenních stažení z npm \cite{npm} během posled
 která také poskytuje TypeScript \textit{types}.
 \end{sloppypar}
 
-Parser korektně parsuje každý validní WooWoo dokument. Nechává ale oproti WooWoo specifikaci větší volnost v prázdných
-řádcích mezi bloky, objekty a částmi dokumentu. Dále parser podporuje vnořená vnější prostředí, což opět WooWoo
-specifikace \cite{woowoo} nedovoluje (narozdíl od objektů). Parser tedy parsuje i některé dokumenty, které nejsou zcela
-validní dle WooWoo specifikace.
+Parser korektně parsuje každý jednostránkový validní WooWoo dokument. Nechává ale oproti WooWoo specifikaci větší
+volnost v prázdných řádcích mezi bloky, objekty a částmi dokumentu. Dále parser podporuje vnořená vnější prostředí, což
+opět WooWoo specifikace \cite{woowoo} nedovoluje (narozdíl od objektů). Parser tedy parsuje i některé dokumenty, které
+nejsou zcela validní dle WooWoo specifikace. Direktivy \mintinline{text}{.include} aktuálně podporovány nejsou a parser
+je považuje za normální text bez speciálního významu.
 
 Parser podporuje jak novou zkrácenou formu vnitřního prostředí se zavináčem, tak starší zkrácenou formu s tečkou. Je
 tomu z důvodu použití starší zkrácené formy ve zdrojích existujících studijních textů.
@@ -27,3 +28,32 @@ rozšiřovat abstraktní třídu \mintinline{text}{VariableASTNode} (která roz�
 {ASTNode} a deklaruje variantu vrcholu). Variantou vrcholu je myšlen typ částí dokumentu, objektů a vnějších či
 vnitřních prostředí (slovo \mintinline{text}{variant} bylo použito namísto slova \mintinline{text}{type}, protože
 \mintinline{text}{type} je dle \cite{ts-docs} v jazyce TypeScript klíčové slovo).
+
+Na obrázku \ref{parsovani-ast} je ilustrován (bez detailů jako pozice vrcholu nebo typ/varianta) AST vzniklý parsováním
+zdroje \ref{parsovani-ast-zdroj}.
+
+\begin{figure}\centering
+    \includegraphics[width=1.0\textwidth]{content/realizace/parsování-ast}
+ 	\caption[WooWoo AST]{AST vzniklý parsováním WooWoo zdroje~\ref{parsovani-ast-zdroj}}
+    \label{parsovani-ast}
+\end{figure}
+
+\begin{listing}
+    \caption{WooWoo zdroj, jehož AST je ilustrován na obrázku~\ref{parsovani-ast}}
+    \label{parsovani-ast-zdroj}
+    \begin{minted}[breaklines]{text}
+.Chapter Jméno kapitoly
+  label: chap-1
+
+text text "text text".emphasize text
+
+
+.Question:
+
+  text text "text text".emphasize text?
+
+  .solution:
+
+    Řešení
+    \end{minted}
+\end{listing}

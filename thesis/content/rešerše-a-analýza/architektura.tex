@@ -1,15 +1,15 @@
-Atom \textit{packages} je dle \cite{atom-docs} možno tvořit v jazycích JavaScript nebo v CoffeeScript. Další možností je
+Atom \textit{packages} je dle \cite{atom-docs} možno tvořit v jazycích JavaScript nebo CoffeeScript. Další možností je
 samozřejmě napsat \textit{package} v jiném jazyce, který je možno do jednoho z Atomem podporovaných jazyků přeložit.
 
 Dle \cite{atom-docs} je potřeba, aby \textit{package} obsahoval v kořenovém adresáři meta-soubor \mintinline{text}
 {package.json}. V tomto souboru bude dle \cite{atom-docs} uveden například unikátní název \textit{package} a jeho verze,
-dále zde může být uveden jeho popis, autor a kontakt na něj, odkaz na issue tracker, odkaz na repozitář se zdrojem či
-jiné webové stránky a mnoho dalších informací ve stylu npm \textit{packages}. Dále zde dle \cite{atom-docs} mohou být
-uvedeny různé závislosti z npm, které \textit{package} potřebuje ke svému běhu (nebo pouze k vývoji). Tyto závislosti
-jsou pak dle \cite{atom-docs} automaticky nainstalovány při instalaci samotného \textit{package}. Také zde podle \cite
-{atom-docs} může být uvedena cesta k \textit{main} souboru \textit{package} (pokud není uvedena, použije se výchozí
-možnost \mintinline{text}{index.coffee} nebo \mintinline{text}{index.js}) nebo seznam příkazů, které \textit{package} v
-Atomu aktivují.
+dále zde může být uveden jeho popis, autor a kontakt na něj, odkaz na \textit{issue tracker}, odkaz na repozitář se
+zdrojem či jiné webové stránky a mnoho dalších informací ve stylu npm \textit{packages}. Dále zde dle \cite{atom-docs}
+mohou být uvedeny různé závislosti z npm, které \textit{package} potřebuje ke svému běhu (nebo pouze k vývoji). Tyto
+závislosti jsou pak dle \cite{atom-docs} automaticky nainstalovány při instalaci samotného \textit{package}. Také zde
+podle \cite{atom-docs} může být uvedena cesta k \textit{main} souboru \textit{package} (pokud není uvedena, použije se
+výchozí možnost \mintinline{text}{index.coffee} nebo \mintinline{text}{index.js}) nebo seznam příkazů, které \textit
+{package} v Atomu aktivují.
 
 Hlavní modul (\textit{main} soubor) \textit{package} může dle \cite{atom-docs} implementovat následující funkce, jejichž
 volání spravuje sám Atom:
@@ -31,7 +31,7 @@ volání spravuje sám Atom:
         \mintinline{text}{package} deaktivován.
 \end{itemize}
 Dále dle \cite{atom-docs} může hlavní modul exportovat \mintinline{js}{config} objekt definující položky nastavení
-\textit{package}, které si může uživatel přizpůsobit (jejich aktuální hodnotu pak lze získat opět skrze API). Kód
+\textit{package}, které si může uživatel přizpůsobit (jejich aktuální hodnotu pak lze získat opět pomocí API). Kód
 \textit{package} má dle \cite{atom-docs} vždy k dispozici globální proměnnou \mintinline{js}{atom}, která poskytuje
 přístup k API Atomu. Soubory s JavaScript/CoffeeScript kódem patří dle \cite{atom-docs} do složky \mintinline{text}
 {lib}, soubory s testy pak do složky \mintinline{text}{spec}.
@@ -52,8 +52,8 @@ WooWoo AST do HTML. Takto by mohl vzniknout celý ekosystém \textit{packages} p
 \textit{package} přidal podporu pro zobrazení matematických výrazů, další \textit{package} by přidal podporu pro
 zobrazení TikZ obrázků a jiný \textit{package}, který by definoval šablonu, by řekl, že závisí na hlavním \textit
 {package} a dalších konkrétních \textit{packages} přidávajících podporu zobrazení dalších prvků. Tento \textit{package}
-by také řekl, jak konkrétně šablona, kterou definuje, nazývá různé typy prostředí, objektů a částí dokumentu. Takto by
-v budoucnu mohlo být docíleno modulární podpory více WooWoo šablon.
+by také řekl, jak konkrétně šablona, kterou definuje, nazývá a zobrazuje různé typy prostředí, objektů a částí
+dokumentu. Takto by v budoucnu mohlo být docíleno modulární podpory více WooWoo šablon.
 
 Vydaný \textit{package} si podle \cite{atom-docs} uživatelé mohou nainstalovat ze zabudovaného správce \textit{packages}
 (nebo z terminálu s pomocí nástroje apm, který je také součástí Atomu). Aby bylo možno \textit{package} publikovat, musí

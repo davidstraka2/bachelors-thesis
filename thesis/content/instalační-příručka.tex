@@ -1,0 +1,47 @@
+Instalace rozšíření vyžaduje Atom 1.54 a novější (starší verze mohou fungovat, není to však otestováno).
+
+Zobrazení TikZ obrázků dále vyžaduje lokální instalaci \TeX{} distribuce, která musí poskytovat příkazy
+\mintinline{text}{latex} a \mintinline{text}{dvisvgm}. Dále musí \TeX{} distribuce poskytovat používané \textit
+{packages} (v případě použití výchozí preambule dokumentu jde o následující packages: amsmath, amssymb, bbding, fontenc,
+inputenc, libertine, pgfplots a standalone). Pokud TikZ obrázky nebudou použity, instalace \TeX{} distribuce není nutná.
+
+\begin{sloppypar}
+Rozšíření je možno nainstalovat buď z terminálu s pomocí příkazu \mintinline{text}{apm install wootom}, nebo přímo
+prostřednictvím uživatelského prostředí Atomu (File $\to$ Settings $\to$ Install $\to$ Vyhledejte \uv{wootom} $\to$
+Install).
+\end{sloppypar}
+
+\begin{sloppypar}
+Při práci se zdroji existujících studijních textů (BI-PKM, BI-ZMA) je dále výrazně doporučeno upravit nastavení
+\textit{package} kvůli podpoře vlastních \LaTeX{} maker (a přidaných \LaTeX{} \textit{packages}). Nastavení
+\textit{package} je možno upravit v File $\to$ Settings $\to$ Packages $\to$ Najděte \textit{package} wootom
+$\to$ Settings. Do textového pole položky \textit{MathJax Macros} vložte obsah souboru \mintinline{text}
+{settings/mathjax-macros.txt} z přiloženého CD. Do textového pole položky \textit{TikZ Preamble} pak obdobně vložte
+obsah souboru \mintinline{text}{settings/tikz-preamble.txt}. Po změně nastavení je doporučeno znovu načíst Atom (pro to
+může být využito klávesové zkratky \textsc{Ctrl + Shift + F5}).
+\end{sloppypar}
+
+\section*{Nastavení pro vývoj}
+
+Pro vývoj rozšíření je navíc k závislostem z úvodu této přílohy vyžadována instalace Node.js (spolu s npm).
+
+\begin{enumerate}[label=\textbf{\arabic*.}, ref=F\arabic*.]
+    \item Získejte zdroj rozšíření (GitHub\footnote{GitHub: Wootom (\url{https://github.com/davidstraka2/wootom})},
+        přiložené CD, \ldots)
+    \item \mintinline{text}{cd} do adresáře se zdrojem
+    \item \mintinline{text}{apm link}
+    \item \mintinline{text}{npm install}
+    \item \mintinline{text}{npm run build}
+\end{enumerate}
+
+\subsection*{Užitečné příkazy}
+
+\begin{itemize}
+    \item \mintinline{text}{npm test} – Spuštění jednotkových a integračních testů
+    \item \mintinline{text}{npm run build} – Kompilace zdroje
+    \item \mintinline{text}{npm run format:check} – Kontrola formátování
+    \item \mintinline{text}{npm run format:fix} – Oprava formátování
+    \item \mintinline{text}{npm run lint:check} – Statická analýza
+    \item \mintinline{text}{npm run lint:fix} – Statická analýza s pokusem o nápravu
+    \item \mintinline{text}{npm run pack} – Vytvoření produkčního \textit{package}
+\end{itemize}

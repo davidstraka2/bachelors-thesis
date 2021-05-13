@@ -57,7 +57,7 @@
 \authorWithDegrees{David Straka} %jméno autora včetně současných akademických titulů
 \author{David Straka} %jméno autora bez akademických titulů
 \supervisor{Ing. Tomáš Kalvoda, Ph.D.}
-\acknowledgements{\#todo Doplňte, máte-li komu a za co děkovat. V~opačném případě úplně odstraňte tento příkaz.}
+\acknowledgements{\input{content/poděkování}}
 \abstractCS{\input{content/abstrakt}}
 \abstractEN{\input{content/abstract}}
 \placeForDeclarationOfAuthenticity{V~Praze}
@@ -100,6 +100,9 @@
 \begin{description}
 	\input{content/zkratky}
 \end{description}
+
+\chapter{Instalační příručka}
+\input{content/instalační-příručka}
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
@@ -210,18 +213,20 @@
 
 \chapter{Obsah přiloženého CD}
 
-%upravte podle skutecnosti
-
 \begin{figure}
 	\dirtree{%
-		.1 readme.txt\DTcomment{stručný popis obsahu CD}.
-		.1 exe\DTcomment{adresář se spustitelnou formou implementace}.
-		.1 src.
-		.2 impl\DTcomment{zdrojové kódy implementace}.
-		.2 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
-		.1 text\DTcomment{text práce}.
-		.2 thesis.pdf\DTcomment{text práce ve formátu PDF}.
-		.2 thesis.ps\DTcomment{text práce ve formátu PS}.
+		.1 README.md\DTcomment{stručný popis obsahu CD}.
+		.1 impl.
+			.2 wootom.bundle\DTcomment{Git \textit{bundle} se zdrojem implementace}.
+			.2 wootom\DTcomment{zdroj implementace}.
+			.2 wootom-dist\DTcomment{produkční \textit{package}}.
+		.1 settings.
+			.2 mathjax-macros.txt\DTcomment{doporučené nastavení MathJax Macros}.
+			.2 tikz-preamble.txt\DTcomment{doporučené nastavení TikZ Preamble}.
+		.1 thesis.
+			.2 BP\_Straka\_David\_2021.bundle\DTcomment{Git \textit{bundle} se zdrojem práce ve formátu \LaTeX{}}.
+			.2 BP\_Straka\_David\_2021.pdf\DTcomment{text práce ve formátu PDF}.
+			.2 BP\_Straka\_David\_2021\DTcomment{zdroj práce ve formátu \LaTeX{}}.
 	}
 \end{figure}
 

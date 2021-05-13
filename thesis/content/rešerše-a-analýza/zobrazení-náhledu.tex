@@ -3,11 +3,11 @@ požadavkem je \textbf{\ref{F2}}, dalším požadavkem pak \textbf{\ref{F3}}.
 
 Pro zobrazení náhledu bude AST dokumentu získaný parsováním přeložen do HTML, které bude následně zobrazeno v novém
 podoknu Atomu. Toto HTML je možno libovolně stylovat díky CSS (případně jeho nadstavby Less, jejíž podporu má v sobě
-Atom podle \cite{atom-docs} integrovanou). Je však dobré mít na paměti, že uživatel může chtít použít různá témata a je
-tak lepší nechat co nejvíce stylování právě na nich a v případě nutnosti úpravy stylů dělat takové volby, které budou
-čitelné napříč populárními tématy (například tedy není dobré nastavit barvu textu napevno na bílou či naopak černou).
-Dále je s tímto HTML možno dál libovolně pracovat za pomoci JavaScriptu a například tak náhled doplnit o interaktivní
-prvky.
+Atom podle \cite{atom-docs} integrovanou). Je však dobré mít na paměti, že uživatel může chtít použít různá témata
+uživatelského prostředí a je tak lepší nechat co nejvíce stylování právě na nich a v případě nutnosti úpravy stylů dělat
+takové volby, které budou čitelné napříč populárními tématy prostředí (například tedy není dobré nastavit barvu textu
+napevno na bílou či naopak černou). Dále je s tímto HTML možno dál libovolně pracovat za pomoci JavaScriptu a například
+tak náhled doplnit o interaktivní prvky.
 
 Živá aktualizace náhledu bude zajištěna díky API Atomu, které dle \cite{atom-docs} umožňuje reagovat na různé změny v
 editoru. Při detekci změny pak bude nový obsah opět přeložen na HTML a zobrazen uživateli. Implementace nějakého
@@ -16,6 +16,7 @@ zcela nutná. Je však namístě nějakým způsobem cachovat objekty náročně
 přiměřené rychlosti odezvy.
 
 \subsection{Zobrazování matematických výrazů}
+\label{zobrazovani-matematickych-vyrazu}
 
 Dále je kladen funkční požadavek \textbf{\ref{F4}}. Pro zapisování matematických výrazů aktuálně v praxi používaná
 WooWoo šablona FIT Template používá \LaTeX{} matematická prostředí. Snažit se přesně zobrazit tyto výrazy není vůbec
@@ -46,10 +47,10 @@ dle \cite{mathjax3-docs} dostupný (mimo jiné) z npm pod permisivní open-sourc
 zdroje existujících studijních materiálů využívají pro zobrazování matematických výrazů právě MathJax 2.7.
 
 KaTeX je dle \cite{katex} nejrychlejší knihovna pro zobrazování matematických výrazů na webu, která poskytuje kvalitní
-sazbu jejíž rozložení je založeno na rozložení původního \TeX{}. Dle \cite{katex-docs} také podporuje možnost definování
-vlastních maker. Za vývojem KaTeX stojí podle \cite{katex} Khan Academy a KaTeX je dostupný (mimo jiné) z npm pod
-permisivní open-source licencí. Podle \cite{danmackinlay} KaTeX nenabízí tak širokou podporu matematických maker jako
-MathJax.
+sazbu jejíž rozložení je založeno na rozložení sazby původního \TeX{}. Dle \cite{katex-docs} také podporuje možnost
+definování vlastních maker. Za vývojem KaTeX stojí podle \cite{katex} Khan Academy a KaTeX je dostupný (mimo jiné) z npm
+pod permisivní open-source licencí. Podle \cite{danmackinlay} KaTeX nenabízí tak širokou podporu matematických maker
+jako MathJax.
 
 Vzhledem k nejširší podpoře matematických maker mezi porovnávanými knihovnami bude pro realizaci nejvhodnější použít
 MathJax 2.x i na úkor menší rychlosti za předpokladu, že bude postačující pro zobrazení živého náhledu. Navíc tím bude
@@ -58,6 +59,7 @@ MathJax 2.x bude nejlepší použít SVG, protože je dle \cite{mathjax2-docs} d
 výstupu PreviewHTML poskytuje dostatečně kvalitní úroveň sazby.
 
 \subsection{Zobrazování grafických objektů}
+\label{zobrazovani-grafickych-objektu}
 
 Posledním funkčním požadavkem z oblasti zobrazení náhledu je \textbf{\ref{F5}}. FIT Template šablona a studijní texty,
 které ji využívají, dle \cite{woowoo, pkm} obsahují obrázky popsané \LaTeX{} kódem využívajícím \textit{package} TikZ.

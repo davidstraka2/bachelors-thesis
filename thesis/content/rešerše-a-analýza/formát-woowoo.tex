@@ -59,8 +59,7 @@ meta-blok (odsazený YAML blok). Typ objektu je dle \cite{woowoo} uvozen tečkou
 dvojtečkou. Tělo objektu může obsahovat odsazené bloky, oddělené mezi sebou alespoň dvěma prázdnými řádky.
 
 Pro ilustraci viz zobecněný formát definice objektu \ref{format-woowoo-objekt} nebo definice konkrétního typu objektu ze
-studijního textu BI-PKM i s jeho meta-blokem, která je následována bloky (tento studijní text využívá existující FIT
-Template šablony) \ref{format-woowoo-pkm-otazka}.
+studijního textu BI-PKM i s jeho meta-blokem, která je následována bloky \ref{format-woowoo-pkm-otazka}.
 
 \begin{listing}
     \caption{Obecný formát definice objektu WooWoo dokumentu}
@@ -106,10 +105,10 @@ oddělených jedním prázdným řádkem. Textový blok i vnější prostředí 
 navazujících řádcích doplněny meta-blokem (odsazeným YAML blokem). Dle \cite{woowoo} v sobě textový blok dále může
 obsahovat vnitřní prostředí. Vnější a vnitřní prostředí jsou podrobněji popsány v nadcházejících podsekcích.
 
-Pro ilustraci viz blok ze studijního textu BI-PKM (tento studijní text využívá existující FIT Template šablony)
-\ref{format-woowoo-pkm-blok}. Uvedený blok obsahuje textový blok (s vnitřním prostředím), následovaný zkráceným vnějším
-prostředím bez hlavičky (které se ve FIT Template šabloně chová jako vnější prostředí reprezentující blokovou
-matematiku), následované dalším textovým blokem a vnějším prostředím \mintinline{text}{.solution}.
+Pro ilustraci viz blok ze studijního textu BI-PKM \ref{format-woowoo-pkm-blok}. Uvedený blok obsahuje textový blok (s
+vnitřním prostředím), následovaný zkráceným vnějším prostředím bez hlavičky (které se ve FIT Template šabloně chová jako
+vnější prostředí reprezentující blokovou matematiku), následované dalším textovým blokem a vnějším prostředím
+\mintinline{text}{.solution}.
 
 \begin{listing}
     \caption{Blok ve zdroji studijního textu k BI-PKM \cite{pkm}}
@@ -173,7 +172,7 @@ křehkého vnějšího prostředí ze stejného zdroje \ref{format-woowoo-pkm-ti
 \end{listing}
 
 \begin{listing}
-    \caption{Křehké vnější prostředí ve zdroji studijního textu k BI-PKM \cite{pkm}}
+    \caption{Křehké vnější prostředí ve zdroji studijního textu k BI-PKM~\cite{pkm}}
     \label{format-woowoo-pkm-tikz}
     \begin{minted}[breaklines]{text}
 !tikz:
@@ -205,8 +204,7 @@ Krátká forma vnitřního prostředí má dle \cite{woowoo} prefixovou podobu. 
 navazuje tělo (text) prostředí bez jakýchkoli bílých znaků (mezer; a to před tělem i v něm).
 
 Pro ilustraci viz zobecněný formát definice krátké formy vnitřního prostředí \ref{format-woowoo-inner-env-short} nebo
-definice konkrétního typu krátké formy vnitřního prostředí ze studijního textu BI-PKM (tento studijní text využívá
-existující FIT Template šablony) \ref{format-woowoo-pkm-cite}.
+definice konkrétního typu krátké formy vnitřního prostředí ze studijního textu BI-PKM \ref{format-woowoo-pkm-cite}.
 
 \begin{listing}
     \caption{Obecný formát definice krátké formy vnitřního prostředí WooWoo dokumentu}
@@ -233,7 +231,7 @@ reference do meta-bloku textového bloku, v němž je vnitřní prostředí obsa
 
 Pro ilustraci viz zobecněný formát definice verbózní formy vnitřního prostředí \ref{format-woowoo-inner-env-verbose}
 nebo definice konkrétního typu verbózní formy vnitřního prostředí (s číselnou referencí) ze studijního textu BI-PKM
-(tento studijní text využívá existující FIT Template šablony) \ref{format-woowoo-pkm-notion}.
+\ref{format-woowoo-pkm-notion}.
 
 \begin{listing}
     \caption{Obecný formát definice verbózní formy vnitřního prostředí WooWoo dokumentu}
@@ -335,11 +333,34 @@ dobrat k závěrům a poznání původního problému.
 \end{listing}
 
 Existující dokumenty také obsahují prvky, které čistě z pohledu specifikace WooWoo formátu nejsou zcela validní.
-Například prostředí \mintinline{text}{!tabular} v sobě obsahují vniřní prostředí s matematickými výrazy \cite{pkm}. Pro
-jejich korektní zpracování by tak muselo dojít k další transformaci, přestože jde o obsah křehkého prostředí. Obdobně
-například položka \mintinline{text}{title} v meta-blocích některých objektů obsahuje matematické výrazy (navíc pro ně
-ani není použita stejná syntaxe jako pro zkratku vnitřního matematického prostředí \mintinline{text}{.math}, viz příklad
-ze zdroje studijního textu k BI-PKM \ref{format-woowoo-pkm-title}).
+Například prostředí \mintinline{text}{!tabular} v sobě obsahují vniřní prostředí s matematickými výrazy \cite{pkm}, viz
+příklad ze zdroje studijního textu k BI-PKM \ref{format-woowoo-pkm-table}. Pro jejich korektní zpracování by tak muselo
+dojít k další transformaci, přestože jde o obsah křehkého prostředí. Obdobně například položka \mintinline{text}{title}
+v meta-blocích některých objektů obsahuje matematické výrazy (navíc pro ně ani není použita stejná syntaxe jako pro
+zkratku vnitřního matematického prostředí \mintinline{text}{.math}, viz příklad ze zdroje studijního textu k BI-PKM
+\ref{format-woowoo-pkm-title}).
+
+\begin{listing}
+    \caption{Křehké prostředí \mintinline{text}{!tabular} obsahující matematické výrazy ve zdroji studijního textu k
+      BI-PKM~\cite{pkm}}
+    \label{format-woowoo-pkm-table}
+    \begin{minted}[breaklines]{text}
+!tabular:
+
+    Řecké písmeno  Kapitálka  Česká výslovnost LaTeX
+    -------------  ---------  ---------------- -------
+    $\alpha$                    alfa           alpha
+    $\beta$                     beta           beta
+    $\gamma$       $\Gamma$     gama           gamma
+    $\delta$       $\Delta$     delta          delta
+    $\epsilon$                  epsilon        epsilon
+    $\zeta$                     zeta           zeta
+    $\eta$                      éta            eta
+    $\theta$       $\Theta$     théta          theta
+    $\kappa$                    kapa           kappa
+    $\lambda$      $\Lambda$    lambda         lambda
+    \end{minted}
+\end{listing}
 
 \begin{listing}
     \caption{Meta-blok obsahující matematické výrazy ve zdroji studijního textu k BI-PKM \cite{pkm}}
