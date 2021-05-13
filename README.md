@@ -7,6 +7,7 @@ repozitáři <https://github.com/davidstraka2/wootom>.
 
 ## Rozcestník
 
+- [Zdroj textu BP](thesis/)
 - [Poznámky](notes/README.md)
 
 ## Tagy
